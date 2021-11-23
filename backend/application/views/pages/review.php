@@ -5,7 +5,7 @@
                     <div class="pvr-wrapper">
                         <div class="pvr-box">
                             <h5 class="pvr-header">
-                                Data Table Combination
+                                Review List
                             </h5>
                             <table id="data-table" class="table table-striped table-bordered">
                                 <thead>

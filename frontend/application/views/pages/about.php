@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 who-1">
                 <div>
-                    <h2 class="text-left mb-4">About <span>Find Houses</span></h2>
+                    <h2 class="text-left mb-4">About <span>Propertyforyou</span></h2>
                 </div>
                 <div class="pftext">
                     <?
@@ -51,7 +51,7 @@
                     </div>
                     <div class="service-text-p">
                         <p class="text-center">At present, Propertyforyou prides itself for having around one lakh
-                            property listings spanning across 600+ cities in India.</p>
+                            property listings spanning across various cities in India.</p>
                     </div>
                 </div>
             </article>
@@ -62,7 +62,8 @@
                         <h3>Verification by Propertyforyou team</h3>
                     </div>
                     <div class="service-text-p">
-                        <p class="text-center">Photos / Videos and other details are verified on location</p>
+                        <p class="text-center">Photos / Videos and other details are verified from our end with certain
+                            limitations.</p>
                     </div>
                 </div>
             </article>

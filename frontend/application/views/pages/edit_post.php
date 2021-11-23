@@ -110,6 +110,19 @@ if($get_images){
                                     <h4 class="author__title">User Name</h4>
                                     <p class="author__meta">User Contact Details</p>
                                 </div>
+
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle"
+                                        data-toggle="dropdown" data-display="static" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        Already Sold ? 
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+                                        <!-- <button class="dropdown-item" onclick="sold_function('1','<?=$house_id;?>')" type="button">Not Sold</button> -->
+                                        <button class="dropdown-item" onclick="sold_function('5','<?=$house_id;?>')" type="button">Sold</button>
+                                    </div>
+                                </div>
+
                                 <!--ul class="author__contact">
                                     <li><span class="la la-map-marker"><i class="fa fa-map-marker"></i></span>302 Av
                                         Park, New York</li>
@@ -118,7 +131,21 @@ if($get_images){
                                     <li><span class="la la-envelope-o"><i class="fa fa-envelope"
                                                 aria-hidden="true"></i></span><a href="#">lisa@gmail.com</a></li>
                                 </ul-->
-                                <div class="agent-contact-form-sidebar">
+                                <?
+                                if($get_post_details->row()->status=='1')
+                                {?>
+                                <div class="widget-boxed">
+                                   <p class="author__meta text-center">Post is live now, You can not edit now. </p>
+                                   </div>
+                                <?}else if($get_post_details->row()->status=='5'){
+                                    ?>
+                                    <div class="widget-boxed">
+                                   <p class="author__meta text-center">You Sold Your Property. </p>
+                                   </div>
+                                    <?
+                                }else{
+                                    ?>
+                                    <div class="agent-contact-form-sidebar">
                                     <h4>Update Listing</h4>
 
                                     <?
@@ -142,6 +169,38 @@ if($get_images){
                                             <input type="text" id="pnumber" name="price" placeholder="Price" required=""
                                                 value="<?=$data->price;?>">
                                         </div>
+
+                                        <div cass="d-flex justify-content-arround">
+                                            <input type="number" id="b_date" name="b_date" placeholder="Property Age"
+                                                required="" value="<?=$data->area;?>">
+                                            <input type="text" id="garage_avail" name="garage_avail"
+                                                placeholder="Garage Available" required=""
+                                                value="<?=$data->bathroom;?>">
+                                            <input type="text" id="electricity_avail" name="electricity_avail"
+                                                placeholder="Electricity Available" required=""
+                                                value="<?=$data->price;?>">
+                                        </div>
+
+                                        <div cass="d-flex justify-content-arround">
+                                            <input type="text" id="water_avail" name="water_avail"
+                                                placeholder="Water Available" required="" value="<?=$data->area;?>">
+                                            <input type="text" id="habitable" name="habitable"
+                                                placeholder="Presently Habitable" required=""
+                                                value="<?=$data->bathroom;?>">
+                                            <input type="text" id="lift" name="lift" placeholder="Life Available"
+                                                required="" value="<?=$data->price;?>">
+                                        </div>
+
+                                        <div cass="d-flex justify-content-arround">
+                                            <input type="text" id="floor" name="floor" placeholder="Floor" required=""
+                                                value="<?=$data->area;?>">
+                                            <input type="text" id="facing" name="facing" placeholder="Property Facing"
+                                                required="" value="<?=$data->bathroom;?>">
+
+                                        </div>
+
+
+
                                         <input type="button" name="sendmessage" id="submit_update"
                                             class="multiple-send-message" value="Submit Request">
                                     </form>
@@ -150,6 +209,12 @@ if($get_images){
                                     ?>
 
                                 </div>
+                                    <?
+                                }
+                                ?>
+                                   
+                                
+                                
                             </div>
                         </div>
                     </div>
@@ -160,6 +225,22 @@ if($get_images){
     </div>
 </section>
 
+<div class="modal fade" id="other_modal" tabindex="-1" role="dialog" aria-labelledby="other_modalTitle"
+    aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="color: #ff0000;" id="other_modalTitle">Alert</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="message"></p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
 $(function() {
@@ -183,4 +264,29 @@ $(function() {
 
     });
 });
+</script>
+
+
+
+
+<script>
+function sold_function(status,house_id){
+        var status = status;
+        var house_id = house_id;
+        var datastring = {
+            status: status,
+            house_id: house_id
+        };
+        $.ajax({
+                url: "<?=base_url();?>functions/sold_function/",
+                dataType: 'json',
+                method: "POST",
+                data: datastring,
+                catch: false,
+                success: function(data) {
+                    $("#other_modal").modal('show');
+                    $('#message').html(data.status);
+                }
+            });
+}
 </script>

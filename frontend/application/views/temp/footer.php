@@ -1,4 +1,3 @@
-<!-- START FOOTER -->
 <footer class="first-footer">
     <div class="top-footer">
         <div class="container">
@@ -6,26 +5,38 @@
                 <div class="col-lg-4 col-md-12">
                     <div class="netabout">
                         <a href="https://propertyforyou.in/" class="logo">
-                            <img src="<?=base_url();?>/assets/images/logo-footer.svg" alt="netcom">
+                            <img src="https://propertyforyou.in//assets/images/logo_ppp.png" alt="netcom"
+                                style="width: 100px;height: 100px;">
                         </a>
-                        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum incidunt architecto soluta laboriosam, perspiciatis, aspernatur officiis esse.</p>
-                             -->
                     </div>
                     <div class="contactus">
                         <ul>
-                            
                             <li>
-                                <div class="info"> 
+                                <div class="info">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <a href="tel:917003051389" class="in-p ti ps-1" style="
-                                        color: #c7cfd2;padding-left: 15px;">+91 70030 51389</a>
+                                    <a href="#" class="in-p ti ps-1" style="
+                                        color: #c7cfd2;padding-left: 15px;">
+                                        <?
+                                        $mobiles = $this->query->get_meta(array('status'=>'1','type'=>'contact'), 'site_contact', 'details');
+                                        if($mobiles){
+                                            echo $mobiles;
+                                        }
+                                        ?>
+                                    </a>
                                 </div>
                             </li>
                             <li>
                                 <div class="info">
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
-                                    <a href="mailto:propertyforyou9999@gmail.com" class="in-p ti ps-1" style="
-                                        color: #c7cfd2;padding-left: 15px;">propertyforyou9999@gmail.com</a>
+                                    <a href="#" class="in-p ti ps-1" style="
+                                        color: #c7cfd2;padding-left: 15px;">
+                                        <?
+                                        $email =  $this->query->get_meta(array('status'=>'1','type'=>'site_email'), 'site_contact', 'details');
+                                        if($email){
+                                            echo $email;
+                                        }
+                                        ?>
+                                    </a>
                                 </div>
                             </li>
                         </ul>
@@ -39,7 +50,6 @@
                                 <li><a href="https://propertyforyou.in/">Home </a></li>
                                 <li><a href="https://propertyforyou.in/home/listing">Listing</a></li>
                                 <li><a href="https://propertyforyou.in/home/my_listing">My Listing</a></li>
-                                <li><a href="https://propertyforyou.in/">Property Details</a></li>
 
                             </ul>
                             <ul class="nav-right">
@@ -52,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 col-md-6">
                     <div class="newsletters">
                         <h3>Newsletters</h3>
@@ -74,12 +84,24 @@
     <div class="second-footer">
         <div class="container">
             <p>2021 © Copyright - All Rights Reserved.</p>
+            <?
+            $fnd_social=$this->query->finder(array('status'=>'1'),'social_tbl');
+            if($fnd_social){
+                foreach($fnd_social->result() as $social){?>
             <ul class="netsocials">
-                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                <li><a href="<?=$social->fb;?>" target="blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                </li>
+                <li><a href="<?=$social->twitter;?>" target="blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                </li>
+                <li><a href="<?=$social->insta;?>" target="blank"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="<?=$social->youtube;?>" target="blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                </li>
             </ul>
+            <?}
+            }else{}
+            
+            ?>
+
         </div>
     </div>
 </footer>

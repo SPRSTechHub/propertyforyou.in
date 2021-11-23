@@ -1,5 +1,5 @@
 <?
-                        $res0 = $this->query->finder(array('status'=>'1'), 'house_dtl_tbl');
+                        $res0 = $this->query->finder(array(), 'house_dtl_tbl');
                         if($res0){
                         $peyees = $res0->num_rows();
                         
@@ -7,8 +7,7 @@
                         }
 ?>
 <!-- BEGIN PAGE LEVEL STYLE -->
-<link href="https://preview.pvrtechstudio.com/demo/pvrlite/pvrlite/assets/plugins/icheck/skins/all.css"
-    rel="stylesheet" />
+<link href="<?=base_url();?>/assets/plugins/icheck/skins/all.css" rel="stylesheet" />
 <!-- END PAGE LEVEL STYLE -->
 <style>
 table {
@@ -19,6 +18,7 @@ table {
     overflow-x: auto;
     white-space: nowrap;
 }
+
 </style>
 <!--Begin Content-->
 <div class="content">
@@ -27,16 +27,14 @@ table {
             <div class="pvr-wrapper">
                 <div class="pvr-box">
                     <h5 class="pvr-header">
-                        Data Table Combination
+                        Property List
                     </h5>
                     <!-- DataTales START -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary p-2">Total Property - <?=$peyees?> </h6>
                             <br />
-                            <button class="btn btn-success p-2" onclick="add_person()"><i
-                                    class="glyphicon glyphicon-plus"></i> Add
-                                Property</button>
+
                             <button class="btn btn-default p-2" onclick="reload_table()"><i
                                     class="glyphicon glyphicon-refresh"></i>
                                 Reload</button>
@@ -93,21 +91,22 @@ table {
 </div>
 <!--End Content-->
 
-<script>
-var p1;
-
-function edit_image(house_id) {
-    save_method = 'add';
-    $('#form')[0].reset(); // reset form on modals
-    $('.form-group').removeClass('has-error'); // clear error class
-    $('.help-block').empty(); // clear error string
-    //alert(house_id);
-    $('#house_image_id').val(house_id);
-    p1 = house_id;
-    $('#image_form').modal('show'); // show bootstrap modal
-    //$('.modal-title').text('Add Property'); // Set Title to Bootstrap modal title
-}
-</script>
+<div class="modal fade" id="other_modal" tabindex="-1" role="dialog" aria-labelledby="other_modalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="other_modalTitle">Alert</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="message"></p>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -117,6 +116,7 @@ function edit_image(house_id) {
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title text-center">Property Form</h3>
+                <a class="btn btn-success" href="" id="img_fetcher_btn">Modify Images</a>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
             </div>
@@ -124,126 +124,93 @@ function edit_image(house_id) {
                 <form action="#" id="form" class="form-horizontal">
                     <input type="hidden" value="" name="id" />
                     <div class="form-body">
+
+
+
+
+                        <!-- //locha start  -->
                         <div class="single-add-property">
                             <h3>Property description and price</h3>
                             <div class="property-form-group">
                                 <!-- 1ST DIVISION START -->
-                                <input type="hidden" id="id" name="id" value="">
+                                <input type="hidden" name="id" value="">
                                 <div class="row">
-                                    <div class="col-auto">
-                                        <label for="title">User Id</label>
-                                    </div>
-                                    <div class="col">
+                                    <div class="col-md-12">
                                         <p>
-                                            <input type="text" name="userid" id="userid"
+                                            <label for="title">Userid</label>
+                                            <input type="text" name="userid" placeholder="">
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                            <label for="title">Property id</label>
+                                            <input type="text" name="house_id_edit" placeholder="" readonly>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                            <label for="title">Property Title</label>
+                                            <input type="text" name="house_name"
                                                 placeholder="Enter your property title">
                                         </p>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-auto">
-                                        <label for="title">Property Title</label>
-                                    </div>
-                                    <div class="col">
+                                    <div class="col-md-12">
                                         <p>
-                                            <input type="text" name="house_name" id="house_name"
-                                                placeholder="Enter your property title">
+                                            <label for="description">Property Description 1 *</label>
+                                            <textarea name="desc1"
+                                                placeholder="Describe about your property"></textarea>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-auto">
-                                        <label for="description">Description 1 *</label>
-                                    </div>
-                                    <div class="col">
+                                    <div class="col-md-12">
                                         <p>
-                                            <input type="text" id="desc1" name="desc1"
-                                                placeholder="Describe about your property"></input>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-auto">
-                                        <label for="description">Description 2</label>
-                                    </div>
-                                    <div class="col">
-                                        <p>
-                                            <input type="text" id="desc2" name="desc2"
-                                                placeholder="Describe about your property"></input>
+                                            <label for="description">Property Description 2</label>
+                                            <textarea name="desc2"
+                                                placeholder="Describe about your property"></textarea>
                                         </p>
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-12 dropdown faq-drop">
+                                    <div class="col-lg-6 col-md-12 dropdown faq-drop">
                                         <div class="form-group categories">
                                             <label for="price">Purpose</label>
-                                            <select class="nice-select form-control wide" id="purpose" name="purpose"
-                                                tabindex="0">
-                                                <ul class="list">
-                                                    <option data-value="1" value="rent" class="option">Rent</option>
-                                                    <option data-value="2" valu="sale" class="option">Sale</option>
-                                                </ul>
-                                            </select>
+                                            <input type="text" name="purpose" placeholder="">
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-12 dropdown faq-drop">
+                                    <div class="col-lg-6 col-md-12 dropdown faq-drop">
                                         <div class="form-group categories">
                                             <label for="price">Type</label>
-                                            <select class="nice-select form-control wide" id="type" name="type"
-                                                tabindex="0">
-                                                <ul class="list">
-                                                    <option data-value="1" value="house" class="option">house</option>
-                                                    <option data-value="2" value="commercial" class="option">commercial
-                                                    </option>
-                                                    <option data-value="3" value="apartment" class="option">apartment
-                                                    </option>
-                                                    <option data-value="4" value="lot" class="option">lot</option>
-                                                    <option data-value="5" value="garage" class="option">garage</option>
-                                                </ul>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-12 dropdown faq-drop">
-                                        <div class="form-group categories">
-                                            <label for="price">Room</label>
-                                            <select class="nice-select form-control wide" name="room" id="room"
-                                                tabindex="0">
-                                                <ul class="list">
-                                                    <option data-value="1" value="1" class="option">1</option>
-                                                    <option data-value="2" value="2" class="option">2</option>
-                                                    <option data-value="3" value="3" class="option">3</option>
-                                                    <option data-value="4" value="4" class="option">4</option>
-                                                    <option data-value="5" value="5" class="option">5</option>
-                                                </ul>
-                                            </select>
+                                            <input type="text" name="type" placeholder="">
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12">
                                         <p class="no-mb">
                                             <label for="price">Price</label>
-                                            <input type="text" name="price" placeholder="INR" id="price">
+                                            <input type="text" placeholder="INR" name="price">
                                         </p>
                                     </div>
                                     <div class="col-lg-6 col-md-12">
                                         <p class="no-mb last">
                                             <label for="area">Area</label>
-                                            <input type="text" name="area" placeholder="Sqft" id="area">
+                                            <input type="text" placeholder="Sqft" name="area">
                                         </p>
                                     </div>
                                 </div>
-
                                 <!-- 1ST DIVISION END -->
                             </div>
                         </div>
-
-                        <!-- PHOTO UPLOAD START -->
-
-                        <!-- PHOTO UPLOAD END -->
-
                         <!-- ADDRESS START -->
                         <div class="single-add-property">
                             <h3>property Location</h3>
@@ -252,30 +219,40 @@ function edit_image(house_id) {
                                     <div class="col-lg-6 col-md-12">
                                         <p>
                                             <label for="address">Address</label>
-                                            <input type="text" name="address" placeholder="Enter Your Address"
-                                                id="address">
+                                            <input type="text" placeholder="Enter Your Address" name="address">
                                         </p>
                                     </div>
                                     <div class="col-lg-6 col-md-12">
                                         <p>
-                                            <label for="city">City</label>
-                                            <input type="text" name="city" placeholder="Enter Your City" id="city">
+                                            <label for="landmark">*Add Landmark</label>
+                                            <input type="text" placeholder="Nearest Landmark" name="landmark">
                                         </p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12">
-
                                         <p>
-                                            <label for="city">State</label>
-                                            <input type="text" name="state" id="state" placeholder="">
+                                            <label for="city">City</label>
+                                            <input type="text" placeholder="Enter Your City" name="city">
                                         </p>
                                     </div>
                                     <div class="col-lg-6 col-md-12">
                                         <p>
-                                            <label for="country" class="">Country</label>
-                                            <input type="text" name="country" placeholder="Enter Your Country"
-                                                id="country">
+                                            <label for="pin" class="pb-3">Pincode*</label>
+                                            <input type="text" placeholder="Enter Your Pincode" name="pin" required>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <p>
+                                            <label for="pin" class="pb-3">state*</label>
+                                            <input type="text" placeholder="" name="state" required>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <p>
+                                            <label for="country" class="pb-3">Country</label>
+                                            <input type="text" placeholder="Enter Your Country" name="country"
+                                                value="INDIA">
                                         </p>
                                     </div>
                                 </div>
@@ -284,73 +261,132 @@ function edit_image(house_id) {
                         </div>
                         <!-- ADDRESS END -->
 
+
                         <!-- EXTRA START HERE -->
                         <div class="single-add-property">
                             <h3>Extra Information</h3>
                             <div class="property-form-group">
                                 <div class="row">
 
-                                    <div class="col-lg-4 col-md-12 dropdown faq-drop">
-                                        <div class="form-group categories">
-                                            <label for="price">House Age</label>
-                                            <select class="nice-select form-control wide" tabindex="0" id="b_date"
-                                                name="b_date">
-                                                <ul class="list">
-                                                    <option data-value="0-1" value="0-1" class="option">0-1 years
-                                                    </option>
-                                                    <option data-value="0-5" value="0-5" class="option">0-5 years
-                                                    </option>
-                                                    <option data-value="0-10" value="0-10" class="option">0-10 years
-                                                    </option>
-                                                    <option data-value="0-15" value="0-15" class="option">0-15 years
-                                                    </option>
-                                                    <option data-value="0-20" value="0-20" class="option">0-20 years
-                                                    </option>
-                                                    <option data-value="0-50" value="0-50" class="option">0-50 years
-                                                    </option>
-                                                    <option data-value="50+" value="50+" class="option">50+ years
-                                                    </option>
-                                                </ul>
-                                            </select>
-                                        </div>
+                                    <div class="col-lg-6 col-md-12 dropdown faq-drop">
+                                        <p class="no-mb last">
+                                            <label for="area">Property Age</label>
+                                            <input type="text" placeholder="" name="b_date">
+                                        </p>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-12 dropdown faq-drop">
+                                    <div class="col-lg-6 col-md-12 dropdown faq-drop">
                                         <div class="form-group categories">
-                                            <label for="price">Bedroom</label>
-                                            <select class="nice-select form-control wide" tabindex="0" id="bedroom"
-                                                name="bedroom">
-                                                <ul class="list">
-                                                    <option data-value="1" value="1" class="option">1</option>
-                                                    <option data-value="2" value="2" class="option">2</option>
-                                                    <option data-value="1" value="3" class="option">3</option>
-                                                    <option data-value="2" value="4" class="option">4</option>
-                                                    <option data-value="1" value="5" class="option">5</option>
-                                                    <option data-value="2" value="6" class="option">6</option>
-                                                    <option data-value="2" value="6+" class="option">6+</option>
-                                                </ul>
-                                            </select>
+                                            <p class="no-mb last">
+                                                <label for="area">Bedroom</label>
+                                                <input type="text" placeholder="" name="bedroom">
+                                            </p>
+
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-12 dropdown faq-drop">
+                                    <div class="col-lg-6 col-md-12 dropdown faq-drop">
                                         <div class="form-group categories">
-                                            <label for="price">Bathroom</label>
-                                            <select class="nice-select form-control wide" tabindex="0" id="bathroom"
-                                                name="bathroom">
-                                                <ul class="list">
-                                                    <option data-value="1" value="1" class="option">1</option>
-                                                    <option data-value="2" value="2" class="option">2</option>
-                                                    <option data-value="1" value="3" class="option">3</option>
-                                                    <option data-value="2" value="4" class="option">4</option>
-                                                    <option data-value="1" value="5" class="option">5</option>
-                                                    <option data-value="2" value="6" class="option">6</option>
-                                                    <option data-value="2" value="6+" class="option">6+</option>
-                                                </ul>
-                                            </select>
+                                            <p class="no-mb last">
+                                                <label for="area">Bathroom</label>
+                                                <input type="text" placeholder="" name="bathroom">
+                                            </p>
+
                                         </div>
                                     </div>
 
                                 </div>
+
+                                <div class="row">
+
+                                    <div class="col-lg-6 col-md-12 dropdown faq-drop">
+                                        <div class="form-group categories">
+                                            <p class="no-mb last">
+                                                <label for="area">Dining</label>
+                                                <input type="text" placeholder="" name="dining">
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-12 dropdown faq-drop">
+                                        <div class="form-group categories">
+                                            <p class="no-mb last">
+                                                <label for="area">kitchen</label>
+                                                <input type="text" placeholder="" name="kitchen">
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 dropdown faq-drop">
+                                        <div class="form-group categories">
+                                            <p class="no-mb last">
+                                                <label for="area">Balcony</label>
+                                                <input type="text" placeholder="" name="balcony">
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-lg-6 col-md-12 dropdown faq-drop">
+                                        <div class="form-group categories">
+                                            <label for="price">Garage Available</label>
+                                            <input type="text" name="garage_avail" placeholder="">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-12 dropdown faq-drop">
+                                        <div class="form-group categories">
+                                            <label for="price">Electricity Available</label>
+                                            <input type="text" name="electricity_avail" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 dropdown faq-drop">
+                                        <div class="form-group categories">
+
+                                            <label for="price">Water Available</label>
+                                            <input type="text" name="water_avail" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 dropdown faq-drop">
+                                        <div class="form-group categories">
+                                            <label for="price">Presently Habitable</label>
+                                            <input type="text" name="habitable" placeholder="">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+
+
+                                    <div class="col-lg-6 col-md-12 dropdown faq-drop">
+                                        <div class="form-group categories">
+                                            <label for="price">Lift Available</label>
+                                            <input type="text" name="lift" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 dropdown faq-drop">
+                                        <div class="form-group categories">
+
+                                            <label for="price">Floor</label>
+                                            <input type="text" name="floor" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 dropdown faq-drop">
+                                        <div class="form-group categories">
+
+                                            <label for="price">property facing</label>
+                                            <input type="text" name="facing" placeholder="">
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </div>
                         </div>
                         <!-- EXTRA END HERE -->
@@ -363,15 +399,14 @@ function edit_image(house_id) {
                                     <div class="col-lg-6 col-md-12">
                                         <p>
                                             <label for="con-name">Name</label>
-                                            <input type="text" placeholder="Enter Your Name" id="con_name"
-                                                name="con_name">
+                                            <input type="text" placeholder="Enter Your Name" name="con_name">
                                         </p>
                                     </div>
                                     <div class="col-lg-6 col-md-12">
                                         <p>
-                                            <label for="con-user">Username</label>
-                                            <input type="text" placeholder="Enter Your Username" id="con_user"
-                                                name="con_user">
+                                            <input type="hidden" placeholder="Enter Your Username" name="con_user">
+                                            <label for="post_by">I am ... </label>
+                                            <input type="text" name="post_by" placeholder="">
                                         </p>
                                     </div>
                                 </div>
@@ -379,15 +414,14 @@ function edit_image(house_id) {
                                     <div class="col-lg-6 col-md-12">
                                         <p class="no-mb first">
                                             <label for="con-email">Email</label>
-                                            <input type="email" placeholder="Enter Your Email" id="con_email"
-                                                name="con_email">
+                                            <input type="email" placeholder="Enter Your Email" name="con_email" value=""
+                                                readonly>
                                         </p>
                                     </div>
                                     <div class="col-lg-6 col-md-12">
                                         <p class="no-mb last">
                                             <label for="con-phn">Phone</label>
-                                            <input type="text" placeholder="Enter Your Phone Number" id="con_phn"
-                                                name="con_phn">
+                                            <input type="text" placeholder="Enter Your Phone Number" name="con_phn">
                                         </p>
                                     </div>
                                 </div>
@@ -395,6 +429,9 @@ function edit_image(house_id) {
 
                         </div>
                         <!-- CONTACT END -->
+                        <!-- //locha end -->
+
+
 
 
 
@@ -414,7 +451,39 @@ function edit_image(house_id) {
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- End Bootstrap modal -->
+<script>
+var p1;
 
+function edit_image(house_id) {
+    save_method = 'update';
+    // $('#form')[0].reset();
+    // $('.form-group').removeClass('has-error');
+    // $('.help-block').empty();
+    // $.ajax({
+    //     url: "<?php echo site_url('Control/ajax_edit/')?>",
+    //     type: "GET",
+    //     "data": {
+    //         tbl: 'house_dtl_tbl',
+    //         id: house_id
+    //     },
+    //     dataType: "JSON",
+    //     success: function(data) {
+
+    //         $('[name="house_id"]').val(house_id);
+
+    //         $('#modal_form1').modal('show'); // show bootstrap modal
+    //         $('.modal-title').text('Edit Property'); // Set Title to Bootstrap modal title
+    //     },
+    //     error: function(jqXHR, textStatus, errorThrown) {
+    //         //  alert('Error get data from ajax');
+    //     }
+    // });
+    $('[name="house_id"]').val(house_id);
+
+    $('#modal_form1').modal('show'); // show bootstrap modal
+    $('.modal-title').text('Edit Property'); // Set Title to Bootstrap modal title
+}
+</script>
 <div class="modal fade" id="modal_form1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -466,7 +535,7 @@ function approveme(id) {
     }
 }
 </script>
-<!-- Bootstrap modal -->
+
 <div class="modal fade" id="image_form" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -474,27 +543,25 @@ function approveme(id) {
                 <input type="text" id="house_image_id" name="house_id">
             </div>
             <script>
-            //var p1 = 'tttt' ;
             var admin_id = $("#house_image_id").val();
-            //alert(admin_id);
             </script>
             <?
             echo "<script>document.writeln(p1);</script>";
-//             $h_id=$_POST['house_image_id'];
-
-// $find_img=$this->query->finder(array('house_id'=>$h_id),'image_tbl');
-// if($find_img){
-//     echo('achi');
-// }else{
-//     echo('not found');
-// }
             ?>
+        </div>
+    </div>
+</div>
 
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- End Bootstrap modal -->
 
+<div class="modal fade" id="edit_form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body form">
+                <input type="text" id="house_image_id" name="house_id">
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -505,7 +572,7 @@ var table;
 
 $(document).ready(function() {
 
-    //datatables
+    //datatables 
     table = $('#table').DataTable({
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
@@ -639,38 +706,61 @@ function edit_person(id) {
         dataType: "JSON",
         success: function(data) {
             $('[name="id"]').val(data.id);
-            $('[name="house_id"]').val(data.house_id);
+            $('[name="house_id_edit"]').val(data.house_id);
 
-            /* $('[name="house_name"]').val(data.house_name);
+
+            $('[name="userid"]').val(data.userid);
+            $('[name="house_name"]').val(data.house_name);
             $('[name="desc1"]').val(data.desc1);
             $('[name="desc2"]').val(data.desc2);
+            $('[name="desc3"]').val(data.desc3);
+            $('[name="desc4"]').val(data.desc4);
+            $('[name="pin"]').val(data.pin);
             $('[name="purpose"]').val(data.purpose);
             $('[name="type"]').val(data.type);
-            $('[name="room"]').val(data.room);
             $('[name="price"]').val(data.price);
             $('[name="area"]').val(data.area);
             $('[name="address"]').val(data.address);
+            $('[name="landmark"]').val(data.landmark);
             $('[name="city"]').val(data.city);
             $('[name="state"]').val(data.state);
             $('[name="country"]').val(data.country);
             $('[name="b_date"]').val(data.b_date);
             $('[name="bedroom"]').val(data.bedroom);
-            $('[name=" bathroom"]').val(data.bathroom);
+            $('[name="bathroom"]').val(data.bathroom);
+            $('[name="post_by"]').val(data.post_by);
+
+            $('[name="garage_avail"]').val(data.garage_avail);
+            $('[name="electricity_avail"]').val(data.electricity_avail);
+            $('[name="water_avail"]').val(data.water_avail);
+            $('[name="habitable"]').val(data.habitable);
+            $('[name="lift"]').val(data.lift);
+            $('[name="floor"]').val(data.floor);
+            $('[name="facing"]').val(data.facing);
+
+            $('[name="dining"]').val(data.dining);
+            $('[name="kitchen"]').val(data.kitchen);
+            $('[name="balcony"]').val(data.balcony);
             $('[name="con_name"]').val(data.con_name);
             $('[name="con_user"]').val(data.con_user);
             $('[name="con_email"]').val(data.con_email);
             $('[name="con_phn"]').val(data.con_phn);
-*/
 
-            $('#modal_form1').modal('show'); // show bootstrap modal when complete loaded
-            // $('.modal-title1').text('Edit Property'); // Set title to Bootstrap modal title
+            $('#edit_form.modal-title').text('Edit Property');
+            $('#modal_form').modal('show');
+            $('.modal-title_box').show();
+            $('.modal-title').text('Edit Property');
+            $('#img_fetcher_btn').attr("href", "https://propertyforyou.in/home/mod_image/?hid=" +
+                data.house_id);
+
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            alert('Error get data from ajax');
+            $("#other_modal").modal('show');
+            $('#message').html('Error get data from ajax');
+
         }
     });
 }
-
 
 function reload_table() {
     table.ajax.reload(null, false); //reload datatable ajax 
@@ -684,7 +774,7 @@ function save() {
     if (save_method == 'add') {
         url = "<?php echo site_url('control/store_list_tbl')?>";
     } else {
-        url = "<?php echo site_url('control/update_list_tbl')?>";
+        url = "<?php echo site_url('api/update_list_tbl')?>";
     }
 
     // ajax adding data to database
@@ -707,7 +797,8 @@ function save() {
 
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            alert('Error adding / update data');
+            $("#other_modal").modal('show');
+            $('#message').html('Error adding / update data');
             $('#btnSave').text('save'); //change button text
             $('#btnSave').attr('disabled', false); //set button enable 
 
@@ -716,7 +807,7 @@ function save() {
 }
 
 function delete_person(id) {
-    if (confirm('Are you sure delete this data?')) {
+    if (confufm('Are you sure delete this data?')) {
         // ajax delete data to database
         $.ajax({
             url: "<?php echo site_url('control/ajax_delete_product')?>/" + id,
@@ -728,7 +819,8 @@ function delete_person(id) {
                 reload_table();
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                alert('Error deleting data');
+                $("#other_modal").modal('show');
+                $('#message').html('Error deleting data');
             }
         });
 

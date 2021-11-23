@@ -109,7 +109,7 @@ $(document).ready(function() {
             $('#message').html(data.status);
                     } else if (data.error == '0') {
                         location.replace(
-                            '<?=base_url();?>/home/index');
+                            '<?=base_url();?>/home/membership');
                     } else {
                         $("#other_modal").modal('show');
             $('#message').html(data.status);

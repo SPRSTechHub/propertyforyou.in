@@ -57,6 +57,70 @@ class Home extends CI_Controller {
 		}
 	}
 
+	public function membership(){
+		if($this->session->has_userdata('ses_data')){
+		$data['user_data']=$this->session->ses_data;
+		$this->load->view('temp/header');
+		$this->load->view('temp/nav',$data);
+		$this->load->view('pages/membership');
+		$this->load->view('temp/footer');
+        
+	    }else{
+			$this->load->view('temp/header');
+			$this->load->view('temp/nav');
+			$this->load->view('pages/membership');
+			$this->load->view('temp/footer');
+		}
+	}
+
+	public function mod_image(){
+		if($this->session->has_userdata('ses_data')){
+		$data['user_data']=$this->session->ses_data;
+		$this->load->view('temp/header');
+		$this->load->view('temp/nav',$data);
+		$this->load->view('pages/mod_images');
+		$this->load->view('temp/footer');
+        
+	    }else{
+			$this->load->view('temp/header');
+			$this->load->view('temp/nav');
+			$this->load->view('pages/mod_images');
+			$this->load->view('temp/footer');
+		}
+	}
+
+	public function terms(){
+		if($this->session->has_userdata('ses_data')){
+		$data['user_data']=$this->session->ses_data;
+		$this->load->view('temp/header');
+		$this->load->view('temp/nav',$data);
+		$this->load->view('pages/terms');
+		$this->load->view('temp/footer');
+        
+	    }else{
+			$this->load->view('temp/header');
+			$this->load->view('temp/nav');
+			$this->load->view('pages/terms');
+			$this->load->view('temp/footer');
+		}
+	}
+
+	public function privacy(){
+		if($this->session->has_userdata('ses_data')){
+		$data['user_data']=$this->session->ses_data;
+		$this->load->view('temp/header');
+		$this->load->view('temp/nav',$data);
+		$this->load->view('pages/privacy');
+		$this->load->view('temp/footer');
+        
+	    }else{
+			$this->load->view('temp/header');
+			$this->load->view('temp/nav');
+			$this->load->view('pages/privacy');
+			$this->load->view('temp/footer');
+		}
+	}
+
 	public function contact(){
 		if($this->session->has_userdata('ses_data')){
 		$data['user_data']=$this->session->ses_data;
@@ -79,14 +143,18 @@ class Home extends CI_Controller {
 	//	echo($code);
 	//}
 
+	
+	 public function enquery()
+	 {
+		 $codem = $this->input->get('code');
 
-	// public function desc()
-	// {
-	// 	$this->load->view('temp/header');
-	// 	$this->load->view('temp/nav');
-	// 	$this->load->view('pages/desc');
-	// 	$this->load->view('temp/footer');
-	// }
+		 $getdetails = $this->query->finder(array('id' => $codem), 'contact_tbl');
+			if($getdetails){
+				$data = $getdetails->row();
+				//print_r();
+				$this->load->view('pages/view',$data);		
+			}
+	}
 	
 	public function desc(){
 		if($this->session->has_userdata('ses_data')){
@@ -175,6 +243,22 @@ class Home extends CI_Controller {
 			$this->load->view('temp/header');
 			$this->load->view('temp/nav');
 			$this->load->view('pages/sale');
+			$this->load->view('temp/footer');
+		}
+	}
+
+	public function buy(){
+		if($this->session->has_userdata('ses_data')){
+		$data['user_data']=$this->session->ses_data;
+		$this->load->view('temp/header');
+		$this->load->view('temp/nav',$data);
+		$this->load->view('pages/buy');
+		$this->load->view('temp/footer');
+        
+	    }else{
+			$this->load->view('temp/header');
+			$this->load->view('temp/nav');
+			$this->load->view('pages/buy');
 			$this->load->view('temp/footer');
 		}
 	}

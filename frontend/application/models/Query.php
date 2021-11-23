@@ -37,6 +37,35 @@ public function findBetween($param, $limit, $tbl){
       }
       }
 
+
+
+
+      public function state_finder($param, $tbl){
+        $this->db->select('*');
+        $this->db->from($tbl);
+        $this->db->where($param);
+        $this->db->order_by('state',"ASC");
+        $query = $this->db->get();
+        
+        if($query->num_rows()>0){
+        return $query;
+        }else{
+        return false;
+        }
+      }
+
+      public function find_meta($param){
+        $this->db->select('*');
+        $this->db->from('subscription_tbl');
+        $this->db->where($param);
+        $query = $this->db->get();
+        
+        if($query->num_rows()>0){
+        return $query->row();
+        }else{
+        return false;
+        }
+        } 
       
 public function finder($param, $tbl){
 $this->db->select('*');

@@ -84,6 +84,38 @@ class Home extends CI_Controller {
 		redirect('https://control.propertyforyou.in//home/signin');
 		}
 	}
+	
+
+
+	public function mod_image(){
+		if($this->session->has_userdata('ses_data')){
+		$data['admin_data']=$this->session->ses_data;
+		
+		$this->load->view('temp/header');
+		$this->load->view('temp/nav');
+		$this->load->view('pages/mod_image',$data);
+		$this->load->view('temp/footer');
+		
+        
+	    }else{
+		redirect('https://control.propertyforyou.in//home/signin');
+		}
+	}
+
+	public function server(){
+		if($this->session->has_userdata('ses_data')){
+		$data['admin_data']=$this->session->ses_data;
+		
+		$this->load->view('temp/header');
+		$this->load->view('temp/nav');
+		$this->load->view('pages/server',$data);
+		$this->load->view('temp/footer');
+		
+        
+	    }else{
+		redirect('https://control.propertyforyou.in//home/signin');
+		}
+	}
 
 
 	public function user(){
@@ -137,6 +169,112 @@ class Home extends CI_Controller {
 		$this->load->view('temp/header');
 		$this->load->view('temp/nav');
 		$this->load->view('pages/test',$data);
+		$this->load->view('temp/footer');
+		
+        
+	    }else{
+		redirect('https://control.propertyforyou.in//home/signin');
+		}
+	}
+
+
+	public function contact(){
+		if($this->session->has_userdata('ses_data')){
+		$data['admin_data']=$this->session->ses_data;
+		
+		$this->load->view('temp/header');
+		$this->load->view('temp/nav');
+		$this->load->view('pages/contact',$data);
+		$this->load->view('temp/footer');
+		
+        
+	    }else{
+		redirect('https://control.propertyforyou.in//home/signin');
+		}
+	}
+
+	public function about(){
+		if($this->session->has_userdata('ses_data')){
+		$data['admin_data']=$this->session->ses_data;
+		
+		$this->load->view('temp/header');
+		$this->load->view('temp/nav');
+		$this->load->view('pages/about',$data);
+		$this->load->view('temp/footer');
+		
+        
+	    }else{
+		redirect('https://control.propertyforyou.in//home/signin');
+		}
+	}
+
+	public function subscription(){
+		if($this->session->has_userdata('ses_data')){
+		$data['admin_data']=$this->session->ses_data;
+		
+		$this->load->view('temp/header');
+		$this->load->view('temp/nav');
+		$this->load->view('pages/subscription',$data);
+		$this->load->view('temp/footer');
+		
+        
+	    }else{
+		redirect('https://control.propertyforyou.in//home/signin');
+		}
+	}
+
+	public function social(){
+		if($this->session->has_userdata('ses_data')){
+		$data['admin_data']=$this->session->ses_data;
+		
+		$this->load->view('temp/header');
+		$this->load->view('temp/nav');
+		$this->load->view('pages/social',$data);
+		$this->load->view('temp/footer');
+		
+        
+	    }else{
+		redirect('https://control.propertyforyou.in//home/signin');
+		}
+	}
+
+	public function contact_meta(){
+		if($this->session->has_userdata('ses_data')){
+		$data['admin_data']=$this->session->ses_data;
+		
+		$this->load->view('temp/header');
+		$this->load->view('temp/nav');
+		$this->load->view('pages/contact_meta',$data);
+		$this->load->view('temp/footer');
+		
+        
+	    }else{
+		redirect('https://control.propertyforyou.in//home/signin');
+		}
+	}
+
+
+	public function terms(){
+		if($this->session->has_userdata('ses_data')){
+		$data['admin_data']=$this->session->ses_data;
+		
+		$this->load->view('temp/header');
+		$this->load->view('temp/nav');
+		$this->load->view('pages/terms',$data);
+		$this->load->view('temp/footer');
+		
+        
+	    }else{
+		redirect('https://control.propertyforyou.in//home/signin');
+		}
+	}
+	public function privacy(){
+		if($this->session->has_userdata('ses_data')){
+		$data['admin_data']=$this->session->ses_data;
+		
+		$this->load->view('temp/header');
+		$this->load->view('temp/nav');
+		$this->load->view('pages/privacy',$data);
 		$this->load->view('temp/footer');
 		
         

@@ -9,6 +9,74 @@ class Control extends CI_Controller {
 		$this->load->model('data_model');
 		$tbl = $this->input->post('tbl');
         $data = array();
+        $no = $_POST['start'];
+		// Get Fields List from table dynamically //
+		$date1 = $this->input->post('fromDate');
+		$date2 = $this->input->post('toDate');
+		$datefilter = array('date1' => $date1,'date2' => $date2);
+		if(isset($_POST["is_date_search"]) == "yes"){
+			$list = $this->data_model->get_datatables_by_date_range($tbl,$datefilter);
+		}else{
+			$list = $this->data_model->get_datatables($tbl);
+		}
+		$fields = $this->db->list_fields($tbl);
+        foreach ($list as $person) {
+            $no++;
+            $row = array(); 
+			// loop through fields //
+			foreach ($fields as $field => $key){
+			 $row[$key] = $person->$key;
+			}
+      if($person->status == 1){ 
+      $tada = 'btn-primary btn-inverse-dark btn-sm';
+      $btn_txt='Status';
+      }else if($person->status == 2){
+        $tada = 'btn-danger btn-inverse-dark btn-sm';
+        $btn_txt='Status';
+      }else if($person->status == 5){
+        $tada = 'btn-secondary btn-inverse-dark btn-sm';
+        $btn_txt='Sold';
+      }else{
+        $tada = 'btn-secondary btn-inverse-dark btn-sm';
+        $btn_txt='Status';
+      }           $url='https://control.propertyforyou.in//home/images/?house_id=';
+          //  <button type="button" class="btn btn-secondary btn-inverse-dark btn-rounded btn-icon" onclick="location.replace('."'".$url.$person->house_id."'".')">
+          //               <i class="mdi mdi-border-color"></i>Photos
+          //             </button>
+            //add html for action
+            $row['act'] = '<div class="template-demo d-flex justify-content-between flex-nowrap">
+            
+            <button type="button" class="btn btn-secondary  btn-sm btn-inverse-dark btn-rounded btn-icon" onclick="edit_person('."'".$person->id."'".')">
+                        <i class="mdi mdi-border-color"></i>Edit
+                      </button>
+			<button type="button" class="btn '.$tada.' btn-rounded btn-icon" onclick="edit_image('."'".$person->house_id."'".')">
+                        <i class="mdi mdi-border-color"></i>'.$btn_txt.'
+                      </button>
+			<button type="button" class="btn btn-danger btn-inverse-dark  btn-sm btn-rounded btn-icon" onclick="delete_person('."'".$person->id."'".')">
+                        <i class="fa-solid fa-trash-can"></i>Delete
+                      </button>
+                    </div>';
+			
+ 
+            $data[] = $row;
+        }
+ 
+        $output = array(
+                        "draw" => $_POST['draw'],
+                        "recordsTotal" => $this->data_model->count_all($tbl),
+                        "recordsFiltered" => $this->data_model->count_filtered($tbl),
+                        "data" => $data,
+                );
+        //output to json format
+        echo json_encode($output);
+  }
+
+
+  public function ajax_review_list(){
+
+		$this->load->model('data_model');
+		$tbl = $this->input->post('tbl');
+        $data = array();
 		
         $no = $_POST['start'];
 		
@@ -34,12 +102,18 @@ class Control extends CI_Controller {
 			 $row[$key] = $person->$key;
 			}
 
-      if($person->status == 1){
+      if($person->status == 1){ 
       $tada = 'btn-primary btn-inverse-dark btn-sm';
+      $btn_txt='Status';
       }else if($person->status == 2){
         $tada = 'btn-danger btn-inverse-dark btn-sm';
+        $btn_txt='Status';
+      }else if($person->status == 5){
+        $tada = 'btn-secondary btn-inverse-dark btn-sm';
+        $btn_txt='Sold';
       }else{
         $tada = 'btn-secondary btn-inverse-dark btn-sm';
+        $btn_txt='Status';
       }           $url='https://control.propertyforyou.in//home/images/?house_id=';
           //  <button type="button" class="btn btn-secondary btn-inverse-dark btn-rounded btn-icon" onclick="location.replace('."'".$url.$person->house_id."'".')">
           //               <i class="mdi mdi-border-color"></i>Photos
@@ -47,12 +121,7 @@ class Control extends CI_Controller {
             //add html for action
             $row['act'] = '<div class="template-demo d-flex justify-content-between flex-nowrap">
             
-            <button type="button" class="btn btn-secondary  btn-sm btn-inverse-dark btn-rounded btn-icon" onclick="edit_image('."'".$person->house_id."'".')">
-                        <i class="mdi mdi-border-color"></i>Photos
-                      </button>
-			<button type="button" class="btn '.$tada.' btn-rounded btn-icon" onclick="edit_person('."'".$person->id."'".')">
-                        <i class="mdi mdi-border-color"></i>Status
-                      </button>
+			
 			<button type="button" class="btn btn-danger btn-inverse-dark  btn-sm btn-rounded btn-icon" onclick="delete_person('."'".$person->id."'".')">
                         <i class="fa-solid fa-trash-can"></i>Delete
                       </button>
@@ -70,8 +139,169 @@ class Control extends CI_Controller {
                 );
         //output to json format
         echo json_encode($output);
-    }
+  }
  
+
+
+
+  public function ajax_common_list(){
+
+		$this->load->model('query');
+		$tbl = $this->input->post('tbl');
+        $data = array();
+		
+        $no = $_POST['start'];
+		
+		// Get Fields List from table dynamically //
+		$date1 = $this->input->post('fromDate');
+		$date2 = $this->input->post('toDate');
+		
+		$datefilter = array('date1' => $date1,'date2' => $date2);
+		
+		if(isset($_POST["is_date_search"]) == "yes"){
+			$list = $this->data_model->get_datatables_by_date_range($tbl,$datefilter);
+		}else{
+			$list = $this->data_model->get_datatables($tbl);
+		}
+		$fields = $this->db->list_fields($tbl);
+
+
+        foreach ($list as $person) {
+            $no++;
+            $row = array();
+			// loop through fields //
+			foreach ($fields as $field => $key){
+			 $row[$key] = $person->$key;
+			}
+			
+            //add html for action
+			$row['act'] = '<div class="template-demo d-flex justify-content-between flex-nowrap">
+			<button type="button" class="btn btn-secondary btn-inverse-dark btn-rounded btn-icon" onclick="edit_person('."'".$person->id."'".')">
+                        <i class="mdi mdi-border-color"></i>Edit
+                      </button>
+			<button type="button" class="btn btn-danger btn-inverse-dark btn-rounded btn-icon" onclick="delete_person('."'".$person->id."'".')">
+                        <i class="fa-solid fa-trash-can"></i>Delete
+                      </button>
+                    </div>';
+			
+ 
+            $data[] = $row;
+        }
+ 
+        $output = array(
+                        "draw" => $_POST['draw'],
+                        "recordsTotal" => $this->data_model->count_all($tbl),
+                        "recordsFiltered" => $this->data_model->count_filtered($tbl),
+                        "data" => $data,
+                );
+        //output to json format
+        echo json_encode($output);
+  }
+
+  public function ajax_contact_list(){
+
+		$this->load->model('query');
+		$tbl = $this->input->post('tbl');
+        $data = array();
+		
+        $no = $_POST['start'];
+		
+		// Get Fields List from table dynamically //
+		$date1 = $this->input->post('fromDate');
+		$date2 = $this->input->post('toDate');
+		
+		$datefilter = array('date1' => $date1,'date2' => $date2);
+		
+		if(isset($_POST["is_date_search"]) == "yes"){
+			$list = $this->data_model->get_datatables_by_date_range($tbl,$datefilter);
+		}else{
+			$list = $this->data_model->get_datatables($tbl);
+		}
+		$fields = $this->db->list_fields($tbl);
+
+
+        foreach ($list as $person) {
+            $no++;
+            $row = array();
+			// loop through fields //
+			foreach ($fields as $field => $key){
+			 $row[$key] = $person->$key;
+			}
+			
+            //add html for action
+			$row['act'] = '<div class="template-demo d-flex justify-content-between flex-nowrap">
+			<button type="button" class="btn btn-secondary btn-inverse-dark btn-rounded btn-icon" onclick="edit_person('."'".$person->id."'".')">
+                        <i class="mdi mdi-border-color"></i>Edit
+                      </button>
+			
+                    </div>';
+			
+ 
+            $data[] = $row;
+        }
+ 
+        $output = array(
+                        "draw" => $_POST['draw'],
+                        "recordsTotal" => $this->data_model->count_all($tbl),
+                        "recordsFiltered" => $this->data_model->count_filtered($tbl),
+                        "data" => $data,
+                );
+        //output to json format
+        echo json_encode($output);
+  }
+
+
+  public function ajax_about_list(){
+
+		$this->load->model('query');
+		$tbl = $this->input->post('tbl');
+        $data = array();
+		
+        $no = $_POST['start'];
+		
+		// Get Fields List from table dynamically //
+		$date1 = $this->input->post('fromDate');
+		$date2 = $this->input->post('toDate');
+		
+		$datefilter = array('date1' => $date1,'date2' => $date2);
+		
+		if(isset($_POST["is_date_search"]) == "yes"){
+			$list = $this->data_model->get_datatables_by_date_range($tbl,$datefilter);
+		}else{
+			$list = $this->data_model->get_datatables($tbl);
+		}
+		$fields = $this->db->list_fields($tbl);
+
+
+        foreach ($list as $person) {
+            $no++;
+            $row = array();
+			// loop through fields //
+			foreach ($fields as $field => $key){
+			 $row[$key] = $person->$key;
+			}
+			
+            //add html for action
+			$row['act'] = '<div class="template-demo d-flex justify-content-between flex-nowrap">
+			
+			<button type="button" class="btn btn-danger btn-inverse-dark btn-rounded btn-icon" onclick="delete_person('."'".$person->id."'".')">
+                        <i class="fa-solid fa-trash-can"></i>Delete
+                      </button>
+                    </div>';
+			
+ 
+            $data[] = $row;
+        }
+ 
+        $output = array(
+                        "draw" => $_POST['draw'],
+                        "recordsTotal" => $this->data_model->count_all($tbl),
+                        "recordsFiltered" => $this->data_model->count_filtered($tbl),
+                        "data" => $data,
+                );
+        //output to json format
+        echo json_encode($output);
+  }
 
     public function ajax_add()
     {
@@ -180,6 +410,22 @@ class Control extends CI_Controller {
     {
          $this->load->model('data_model');
         $this->data_model->delete_by_id($id,'house_dtl_tbl');
+        echo json_encode(array("status" => TRUE));
+    }
+
+
+    public function ajax_about_delete($id)
+    {
+         $this->load->model('data_model');
+        $this->data_model->delete_by_id($id,'about_tbl');
+        echo json_encode(array("status" => TRUE));
+    }
+
+
+    public function edit_user_data($id)
+    {
+         $this->load->model('data_model');
+         $this->data_model->update(array('userid' => $this->input->post('id')), array('status'=>'3'),'user_tbl');
         echo json_encode(array("status" => TRUE));
     }
 
@@ -335,4 +581,118 @@ class Control extends CI_Controller {
     }
 
 
+
+
+
+
+
+    public function store_about(){
+      $result=array();
+      $about = $this->input->post('about');
+
+      $storecust = $this->query->insert(array('about' => $about,'status'=>'1'),'about_tbl');
+      if($storecust){
+          $result['status']= 1;
+          $result['msg']="Successfully Account Created";
+          $result['data']=array( 
+          );
+      }else{
+          $result['status']= 0;
+          $result['msg']="Try Again";
+          $result['data']=array();
+      }
+      echo json_encode($result);
+    }
+
+
+    public function store_terms(){
+      $result=array();
+      $terms = $this->input->post('terms');
+
+      $storecust = $this->query->insert(array('terms' => $terms,'status'=>'1'),'terms_tbl');
+      if($storecust){
+          $result['status']= 1;
+          $result['msg']="Successfully Account Created";
+          $result['data']=array( 
+          );
+      }else{
+          $result['status']= 0;
+          $result['msg']="Try Again";
+          $result['data']=array();
+      }
+      echo json_encode($result);
+    }
+
+
+    public function store_privacy(){
+      $result=array();
+
+      $storecust = $this->query->insert(array('privacy' => $this->input->post('privacy'),'status'=>'1'),'privacy_tbl');
+      if($storecust){
+          $result['status']= 1;
+          $result['msg']="Successfully Account Created";
+          $result['data']=array( 
+          );
+      }else{
+          $result['status']= 0;
+          $result['msg']="Try Again";
+          $result['data']=array();
+      }
+      echo json_encode($result);
+    }
+
+
+    public function ajax_social_update()
+    {
+        
+        
+       $cust=array(
+          'id' => $this->input->post('id'),
+          'fb' => $this->input->post('fb'),
+          'twitter' => $this->input->post('twitter'),
+          'insta' => $this->input->post('insta'),
+          'youtube' => $this->input->post('youtube'),
+          'status'=> '1',
+        );
+        $this->data_model->update(array('id' => $this->input->post('id')), $cust,'social_tbl');
+        echo json_encode(array("status" => TRUE));
+    }
+
+    public function ajax_site_contact_update()
+    {
+        
+        
+       $cust=array(
+          'id' => $this->input->post('id'),
+          'details' => $this->input->post('details'),
+          'type' => $this->input->post('type'),
+          'status'=> '1',
+        );
+        $this->data_model->update(array('id' => $this->input->post('id')), $cust,'site_contact');
+        echo json_encode(array("status" => TRUE));
+    }
+
+
+
+    public function ajax_sub_delete($id){
+         $this->load->model('data_model');
+        $this->data_model->delete_by_id($id,'subscription_tbl');
+        echo json_encode(array("status" => TRUE));
+    }
+
+
+
+    public function ajax_terms_delete($id)
+    {
+         $this->load->model('data_model');
+        $this->data_model->delete_by_id($id,'terms_tbl');
+        echo json_encode(array("status" => TRUE));
+    }
+
+    public function ajax_privacy_delete($id)
+    {
+         $this->load->model('data_model');
+        $this->data_model->delete_by_id($id,'privacy_tbl');
+        echo json_encode(array("status" => TRUE));
+    }
 }

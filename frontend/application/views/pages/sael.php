@@ -26,8 +26,12 @@
                                         <div class="homes-tag button alt featured">Featured</div>
                                         <div class="homes-tag button alt sale">For <?=$data->purpose;?></div>
                                         <div class="homes-price">₹ <?=$data->price;?></div>
-                                        <img src="<?=base_url();?>/assets/images/blog/b-11.jpg" alt="home-1"
-                                            class="img-responsive">
+                                        <? 
+                                                    $get_img_url = $this->query->getlastimg1(array('house_id'=>$data->house_id));
+                                        ?>
+
+                                        <img src="<?=base_url();?>/uploads/<?=!empty($get_img_url)? $get_img_url : 'https://propertyforyou.in//assets/images/feature-properties/fp-1.jpg';?>"
+                                            alt="home-1" class="img-responsive" style="width:450px; height:200px;">
                                     </a>
                                 </div>
 
@@ -47,12 +51,9 @@
                                 <ul class="homes-list clearfix pb-3">
                                     <li class="the-icons">
                                         <i class="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span><?=$data->bedroom;?> Bedrooms</span>
+                                        <span><?=$data->pin;?> Pincode</span>
                                     </li>
-                                    <li class="the-icons">
-                                        <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span><?=$data->bathroom;?> Bathrooms</span>
-                                    </li>
+                                    
                                     <li class="the-icons">
                                         <i class="flaticon-square mr-2" aria-hidden="true"></i>
                                         <span><?=$data->area;?> sq ft</span>

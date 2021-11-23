@@ -48,13 +48,23 @@
                 <!--End User Section-->
                 <ul class="nav">
                     <li class="nav-item has-sub-menu active">
-                        <a href="https://control.propertyforyou.in/" class="nav-link" data-toggle="collapse" href="#pvr_dashboard">
+                        <a href="https://control.propertyforyou.in/" class="nav-link" data-toggle="collapse" >
                             <i class="material-icons">home</i>
                             <p>
                                 Dashboard
                                 <b class="caret"></b>
                             </p>
                         </a>
+                        <div class="collapse sub-menu" id="pvr_essential">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <a href="https://control.propertyforyou.in/" class="nav-link sub_link" href="demo/pvrlite/pvrlite/pvr_buttons.html">
+                                        <i class="material-icons">radio_button_checked</i>
+                                        <span class="sidebar-normal">Dashboard</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                         
                     </li>
                     <li class="nav-item has-sub-menu">
@@ -95,7 +105,7 @@
                                 </li>
                                
                                 <li class="nav-item">
-                                    <a href="<?=base_url();?>/home/test" class="nav-link sub_link" href="demo/pvrlite/pvrlite/pvr_spinner_buttons.html">
+                                    <a href="<?=base_url();?>/home/test" class="nav-link sub_link" >
                                         <i class="material-icons">3d_rotation</i>
                                         <span class="sidebar-normal">Review List</span>
                                     </a>
@@ -106,33 +116,99 @@
                         </div>
                         
                     </li>
-                    <!-- <li class="nav-item has-sub-menu">
-                        <a class="nav-link" data-toggle="collapse" href="#pvr_ui_elements">
-                            <i class="material-icons">code</i>
+
+                    <li class="nav-item has-sub-menu">
+                        <a class="nav-link" data-toggle="collapse" href="#pvr_essential">
+                            <i class="material-icons">library_add</i>
                             <p>
-                                Product Management
+                                Setting
                                 <b class="caret"></b>
                             </p>
                         </a>
-                        <div class="collapse sub-menu" id="pvr_ui_elements">
+                        
+                        <div class="collapse sub-menu" id="pvr_essential">
                             <ul class="nav">
                                 <li class="nav-item">
-                                    <a href="product" class="nav-link sub_link" href="demo/pvrlite/pvrlite/pvr_buttons.html">
+                                    <a href="<?=base_url();?>/home/contact_meta" class="nav-link sub_link" href="demo/pvrlite/pvrlite/pvr_buttons.html">
                                         <i class="material-icons">radio_button_checked</i>
-                                        <span class="sidebar-normal">Product List</span>
+                                        <span class="sidebar-normal">Contact Setting</span>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="<?=base_url();?>/home/about" class="nav-link sub_link" href="demo/pvrlite/pvrlite/pvr_buttons.html">
+                                        <i class="material-icons">radio_button_checked</i>
+                                        <span class="sidebar-normal">About Setting</span>
+                                    </a>
+                                </li>
+
+                                
+                               
+                                <li class="nav-item">
+                                    <a href="<?=base_url();?>/home/terms" class="nav-link sub_link" >
+                                        <i class="material-icons">3d_rotation</i>
+                                        <span class="sidebar-normal">Terms & Condition</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="<?=base_url();?>/home/privacy" class="nav-link sub_link" >
+                                        <i class="material-icons">3d_rotation</i>
+                                        <span class="sidebar-normal">Privacy & Policy</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="review" class="nav-link sub_link" href="demo/pvrlite/pvrlite/pvr_spinner_buttons.html">
+                                    <a href="<?=base_url();?>/home/social" class="nav-link sub_link" >
                                         <i class="material-icons">3d_rotation</i>
-                                        <span class="sidebar-normal">Review List</span>
+                                        <span class="sidebar-normal">Social Links</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?=base_url();?>/home/contact" class="nav-link sub_link" >
+                                        <i class="material-icons">3d_rotation</i>
+                                        <span class="sidebar-normal">Contact Person</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?=base_url();?>/home/subscription" class="nav-link sub_link" >
+                                        <i class="material-icons">3d_rotation</i>
+                                        <span class="sidebar-normal">Subscription</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?=base_url();?>/home/server" class="nav-link sub_link" >
+                                        <i class="material-icons">3d_rotation</i>
+                                        <span class="sidebar-normal">Server</span>
                                     </a>
                                 </li>
 
                                
                             </ul>
                         </div>
-                    </li> -->
+                        
+                    </li>
+
+
+                    <li class="nav-item has-sub-menu">
+                        <a class="nav-link" data-toggle="collapse" href="help.sprsinfotech.com">
+                        <i class="material-icons">low_priority</i>
+                            <p>
+                                Help
+                            </p>
+                        </a>
+                    </li>
+
+                    
+                    <li class="nav-item has-sub-menu">
+                        <a class="nav-link" data-toggle="collapse" href="docs.sprsinfotech.com">
+                        <i class="material-icons">low_priority</i>
+                            <p>
+                               Documentation
+                            </p>
+                        </a>
+                    </li>
+                    
                     
                 </ul>
             </div>
@@ -153,7 +229,7 @@
                         </div>
                         <a class="navbar-brand" id="page_header_title" href="javascript:void(0)">
                             <i class="material-icons">insert_chart</i>
-                            Dashboard v1
+                            PROPERTYFORYOU
                         </a>
                     </div>
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -163,89 +239,18 @@
                         <span class="navbar-toggler-bar burger-lines"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end">
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <form class="navbar-form navbar-left navbar-search-form d-none d-lg-block"
-                                    role="search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search">
-                                        <span class="input-group-addon"><i
-                                                class="icons icon-magnifier p-r-10"></i></span>
-                                    </div>
-                                </form>
-                            </li>
-                        </ul>
+                        
                         <ul class="navbar-nav">
                             <li class="dropdown dropdown-slide nav-item d-none d-lg-block">
-                                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <span class="notification">4</span> <i
-                                        class="material-icons">notifications_active</i></a>
-                                <ul class="dropdown-menu dropdown-menu-right notification_left">
-                                    <li>
-                                        <div class="list-item" data-id="item-12">
-                                            <span class="w-40 avatar circle" data-color="green">
-                                                <i class="material-icons">loyalty</i>
-                                            </span>
-                                            <div class="list-body"><a href="javascript:void(0)"
-                                                    class="item-title _500">Server
-                                                    Error
-                                                    Reports</a>
-                                                <div class="item-except text-sm text-muted h-1x f-s-12">
-                                                    Lorem Ipsum is simply dummy text.
-                                                </div>
-                                            </div>
-                                            <div><span class="item-date text-xs text-muted f-s-13">11:30</span></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="list-item" data-id="item-12">
-                                            <span class="w-40 avatar circle" data-color="red">
-                                                <i class="material-icons">supervisor_account</i>
-                                            </span>
-                                            <div class="list-body"><a href="javascript:void(0)"
-                                                    class="item-title _500">John
-                                                    Smith</a>
-                                                <div class="item-except text-sm text-muted h-1x f-s-12">
-                                                    Looking for some client-work
-                                                </div>
-                                            </div>
-                                            <div><span class="item-date text-xs text-muted f-s-13">01:15</span></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="list-item" data-id="item-12">
-                                            <span class="w-40 avatar circle" data-color="orange">
-                                                <i class="material-icons">group_add</i>
-                                            </span>
-                                            <div class="list-body"><a href="javascript:void(0)"
-                                                    class="item-title _500">Olivia</a>
-                                                <div class="item-except text-sm text-muted h-1x f-s-12">
-                                                    Looking for some client-work
-                                                </div>
-                                            </div>
-                                            <div><span class="item-date text-xs text-muted f-s-13">03:03</span></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="list-item" data-id="item-12">
-                                            <span class="w-40 avatar circle" data-color="purple">
-                                                <i class="material-icons">person_add</i>
-                                            </span>
-                                            <div class="list-body"><a href="javascript:void(0)" class="item-title _500">
-                                                    New
-                                                    User
-                                                    Registered</a>
-                                                <div class="item-except text-sm text-muted h-1x f-s-12">
-                                                    Lorem Ipsum is simply dummy text.
-                                                </div>
-                                            </div>
-                                            <div><span class="item-date text-xs text-muted f-s-13">14:40</span></div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <a href="https://propertyforyou.in" class=" nav-link" data-toggle="">
+                                <span class="material-icons-outlined">
+Main Portal
+</span>
+                                </a>
+                                
                             </li>
                             <li class="nav-item dropdown dropdown-slide">
-                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
+                                <a class="nav-link dropdown-toggle" href="#"
                                     id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">
                                     <i class="material-icons">account_box</i>

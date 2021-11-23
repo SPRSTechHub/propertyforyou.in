@@ -27,7 +27,7 @@ table {
               <div class="pvr-wrapper">
                   <div class="pvr-box">
                       <h5 class="pvr-header">
-                          Data Table Combination
+                          Review List
                       </h5>
 
                       <table id="table" class="table table-striped table-bordered display" cellspacing="0" width="100%">
@@ -72,7 +72,7 @@ $(document).ready(function() {
         "order": [], //Initial no order.
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo site_url('control/ajax_list/')?>",
+            "url": "<?php echo site_url('control/ajax_review_list/')?>",
             "data": {
                 tbl: 'review_tbl'
             },

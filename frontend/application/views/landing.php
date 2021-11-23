@@ -780,7 +780,7 @@
                             <!-- Search Fields -->
                             <div class="widget-boxed main-search-field">
                                 <div class="widget-boxed-header">
-                                    <h4>Find Your House</h4>
+                                    <h4>Find Your Property</h4>
                                 </div>
                                 <!-- Search Form -->
                                 <div class="trip-search">

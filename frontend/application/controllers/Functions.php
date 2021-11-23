@@ -44,6 +44,21 @@ class Functions extends CI_Controller {
     echo json_encode($msg);
   }
 
+  public function sold_function(){
+    $msg = array();
+    $status= $this->input->post('status');
+    $house_id=$this->input->post('house_id');
+    
+    $userfind = $this->query->updater(array('house_id' => $house_id),array('status'=>$status),'house_dtl_tbl');
+    if($userfind){
+      $msg['error'] = '0';
+      $msg['status'] ='Details Updated. ';
+    }else{
+       $msg['error'] = '2';
+       $msg['status'] ='Try After Some Time. ';
+    }
+    echo json_encode($msg);
+  }
 
   public function verify_tbl(){
     $msg = array();
@@ -78,8 +93,6 @@ class Functions extends CI_Controller {
     }
     echo json_encode($msg);
   }
-
-
 
   public function store_cust(){
     $msg = array();
@@ -119,6 +132,26 @@ class Functions extends CI_Controller {
 
 
 
+  public function store_house_img(){
+    $result=array();
+    $old_img= $this->input->post('old_img');
+      $house_img = $this->upload_image('house_img');
+    
+    
+  
+      $store_img =  $this->query->updater(array('image'=> $old_img),array('image'=> $house_img),'image_tbl');
+      if($store_img){
+      $result['status']='0';
+      }else{
+      $result['status']='2';
+      }
+  
+  
+    
+       
+    echo json_encode($result);
+  } 
+
   public function review(){
     $msg = array();
     $name= $this->input->post('name');
@@ -137,6 +170,37 @@ class Functions extends CI_Controller {
     $msg['error'] = '0';
     $msg['status'] = 'Successfully Submited.';
 
+     }else{
+    $msg['error'] = '1';
+    $msg['status'] ='Try Again';
+     }
+    echo json_encode($msg);
+  }
+
+  public function con_submit(){
+    $msg = array();
+    $name= $this->input->post('name');
+    $email= $this->input->post('email');
+    $message=$this->input->post('message');
+
+    $user_data = array(
+      'name'=>$name,
+      'email'=>$email,
+      'message'=>$message,
+      'status'=> '1',
+    );
+    //$data_chk = $this->query->insert($user_data, 'contact_tbl');
+    $data_chk =  $this->db->insert('contact_tbl', $user_data);
+    $insert_id = $this->db->insert_id();
+
+     if($data_chk){
+
+      $rcvr = $this->query->finder(array('type' => 'recever_email_id'), 'tbl_config');
+      $rcvr_id = !empty($rcvr)?$rcvr->row()->descp : 'sprsinfotech@gmail.com';
+    $msg['error'] = '0';
+    $msg['status'] = 'Successfully Submited.';
+    $msg['rcvrid']= $rcvr_id;
+    $msg['id']=$insert_id;
      }else{
     $msg['error'] = '1';
     $msg['status'] ='Try Again';
@@ -178,20 +242,33 @@ class Functions extends CI_Controller {
               'userid'=>$this->input->post('userid'),
               'house_name'=>$this->input->post('house_name'),
               'type'=>$this->input->post('type'),
-              'room'=>$this->input->post('room'),
               'price'=>$this->input->post('price'),
               'area'=>$this->input->post('area'),
               'address'=>$this->input->post('address'),
               'landmark'=>$this->input->post('landmark'),
               'city'=>$this->input->post('city'),
+              'pin'=>$this->input->post('pin'),
               'state'=>$this->input->post('state'),
               'country'=>$this->input->post('country'),
+              'post_by'=>$this->input->post('post_by'),
               'desc1'=>$this->input->post('desc1'),
               'desc2'=>$this->input->post('desc2'),
               'b_date'=>$this->input->post('b_date'),
               'purpose'=>$this->input->post('purpose'),
               'bedroom'=>$this->input->post('bedroom'),
               'bathroom'=>$this->input->post('bathroom'),
+              'garage_avail'=>$this->input->post('garage_avail'),
+            'electricity_avail'=>$this->input->post('electricity_avail'),
+            'water_avail'=>$this->input->post('water_avail'),
+            'habitable'=>$this->input->post('habitable'),
+            'lift'=>$this->input->post('lift'),
+            'floor'=>$this->input->post('floor'),
+            'facing'=>$this->input->post('facing'),
+            
+              'dining'=>$this->input->post('dining'),
+              'kitchen'=>$this->input->post('kitchen'),
+              'balcony'=>$this->input->post('balcony'),
+              
               'con_name'=>$this->input->post('con_name'),
               'con_user'=>$this->input->post('con_user'),
               'con_email'=>$this->input->post('con_email'),

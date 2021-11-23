@@ -6,26 +6,19 @@
         display: none;
     }
 }
+
 </style>
 
 <body class="inner-pages listing homepage-4 agents hd-white">
-    <!-- Wrapper -->
     <div id="wrapper">
-        <!-- START SECTION HEADINGS -->
-        <!-- Header Container
-        ================================================== -->
         <header id="header-container">
-            <!-- Header -->
             <div id="header">
                 <div class="container container-header">
-                    <!-- Left Side Content -->
                     <div class="left-side">
-                        <!-- Logo -->
                         <div id="logo">
-                            <a href="//propertyforyou.in"><img src="<?=base_url();?>/assets/images/new-logo.png"
+                            <a href="//propertyforyou.in"><img src="<?=base_url();?>/assets/images/logo_ppp.png"
                                     alt=""></a>
                         </div>
-                        <!-- Mobile Navigation -->
                         <div class="mmenu-trigger">
                             <button class="hamburger hamburger--collapse" type="button">
                                 <span class="hamburger-box">
@@ -33,7 +26,6 @@
                                 </span>
                             </button>
                         </div>
-                        <!-- Main Navigation Mobile-->
                         <nav id="navigation" class="style-1">
                             <ul id="responsive">
                                 <? if($this->session->has_userdata('ses_data')){?>
@@ -46,12 +38,13 @@
                                 </li>
                                 <li class="d-none d-xl-none d-block d-lg-block text-align-left"><a
                                         href="<?=base_url();?>/home/listing" class="btn btn-danger">Add Listing</a></li>
-
+                                <li class="d-none d-xl-none d-block d-lg-block text-align-left"><a
+                                        href="<?=base_url();?>/home/membership" class="btn btn-danger">Subscription</a>
+                                </li>
                                 <? }else{?>
                                 <li class="d-none d-xl-none d-block d-lg-block d-flex justify-content-between">
                                     <a href="<?=base_url();?>/home/signin"><i class="fas fa-sign-in-alt"></i>
                                         &nbsp; Sign-in</a>
-                                    <!--a href="<?=base_url();?>/home/my_listing">My Listing</a-->
                                     <a href="<?=base_url();?>/home/signup"><i class="fa fa-user-plus"
                                             aria-hidden="true"></i>&nbsp;Register
                                     </a>
@@ -59,30 +52,25 @@
                                 <li class="d-none d-xl-none d-block d-lg-block text-align-left"><a
                                         href="<?=base_url();?>/home/listing" class="btn btn-danger">Add Listing</a></li>
 
+
                                 <?}?>
                                 <li><a href="https://propertyforyou.in/">Home</a> </li>
-                                <li><a href="<?=base_url();?>/home/sale">Buy</a></li>
+                                <li><a href="<?=base_url();?>/home/buy">Buy</a></li>
                                 <li><a href="<?=base_url();?>/home/sale">PG</a></li>
                                 <li><a href="<?=base_url();?>/home/rent">Rent</a></li>
-                                <li><a href="https://propertyforyou.in/home/about">About</a></li>
-                                <li><a href="https://propertyforyou.in/home/contact">Contact</a></li>
+                                <li><a href="<?=base_url();?>/home/about">About</a></li>
+                                <li><a href="<?=base_url();?>/home/contact">Contact</a></li>
 
                             </ul>
                         </nav>
-                        <!-- Main Navigation / End -->
                     </div>
-                    <!-- Left Side Content / End -->
-
-
                     <? if($this->session->has_userdata('ses_data')){?>
-                    <!-- Right Side Content / End -->
                     <div class="header-user-menu user-menu add">
                         <a href="<?=base_url();?>/home/my_listing" class="header-user-name">
-                            <span><img src="<?=base_url();?>/assets/images/testimonials/ts-1.jpg" alt=""></span>Hi,
+                            <span><img src="<?=base_url();?>/assets/images/icons/profile_img.png" alt=""></span>Hi,
                             <?=$user_data->name;?>!
                         </a>
                     </div>
-                    <!-- Right Side Content / End -->
                     <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
                         <div class="header-widget sign-in">
                             <a href="<?=base_url();?>/home/logout">
@@ -91,48 +79,43 @@
                         </div>
                     </div>
                     <div class="header-user-menu user-menu add d-none d-none d-lg-none d-xl-flex addmylisting">
-                        <div class="">
-                            <a href="<?=base_url();?>/home/listing" class="button border">Add Listing<i
-                                    class="fas fa-laptop-house ml-2"></i></a>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-secondary">Listing</button>
+                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                                id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false"
+                                data-bs-reference="parent">
+                                <span class="visually-hidden"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                                <li><a class="dropdown-item" href="<?=base_url();?>/home/listing">Add Listing</a></li>
+                                <li><a class="dropdown-item" href="<?=base_url();?>/home/my_listing">My Listing</a></li>
+                                <li><a class="dropdown-item" href="<?=base_url();?>/home/membership">Subscription</a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="">
-                            <a href="<?=base_url();?>/home/my_listing" class="button border">My Listing<i
-                                    class="fas fa-laptop-house ml-2"></i></a>
-                        </div>
-                    </div>
-                    <!-- Right Side Content / End -->
-                    <?}else{?>
 
-                    <!-- Right Side Content / End -->
+
+
+                    </div>
+                    <?}else{?>
                     <div class="header-user-menu user-menu add addmylisting">
                         <div class="">
                             <a href="<?=base_url();?>/home/listing" class="button border">Add Listing<i
                                     class="fas fa-laptop-house ml-2"></i></a>
                         </div>
                     </div>
-
-                    <!-- Right Side Content / End -->
-
                     <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
-                        <!-- Header Widget -->
                         <div class="header-widget sign-in">
                             <a href="<?=base_url();?>/home/signup" class="">Sign Up</a>
                         </div>
-                        <!-- Header Widget / End -->
                     </div>
                     <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
-                        <!-- Header Widget -->
                         <div class="header-widget sign-in">
                             <a href="<?=base_url();?>/home/signin" class="">Sign In</a>
                         </div>
-                        <!-- Header Widget / End -->
                     </div>
-                    <!-- Right Side Content / End -->
                     <?}?>
                 </div>
             </div>
-            <!-- Header / End -->
-
         </header>
         <div class="clearfix"></div>
-        <!-- Header Container / End -->

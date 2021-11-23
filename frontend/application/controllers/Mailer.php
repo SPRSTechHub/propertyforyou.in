@@ -17,12 +17,32 @@ class Mailer extends CI_Controller {
     }
 
     public function SendEmail() {
-        $act_link= base_url().rand('22','99');
+
+
+
+        
+        /*$act_link= base_url().rand('22','99');
         $data = array('to_email'=>'sprsinfotech@gmail.com',
         'act_link'=>$act_link);
         $status = $this->send_mail($data, 'activation');
-         echo json_encode($status);
+         echo json_encode($status);*/
+    }
 
+    public function SendtoWebmaster() {
+        $msg = array();
+        $email=$this->input->get('email');
+        $code=$this->input->get('code');
+        $email_array= array('to_email'=>$email,'act_link'=>$code);
+
+         $status = $this->send_mail($email_array, 'enquery');
+        if($status){
+            $msg['error'] = '0'; 
+            $msg['status'] = 'Done!';
+        }else{
+            $msg['error'] = '1'; 
+            $msg['status'] = 'Error!';
+        }
+        redirect(base_url());
     }
 
     public function send_con(){
@@ -54,13 +74,18 @@ class Mailer extends CI_Controller {
 
         $subject = 'Welcome Mail from Propertyforyou';
              if($mailtype == 'activation'){
-                 $url=base_url().'home/activation/?code='.$param['act_link'];
+                $url=base_url().'home/activation/?code='.$param['act_link'];
                 $data['act_link'] = $url;
                 $data['user_email'] = $param['to_email'];
                 $message = $this->load->view('emails/act_email',$data,true);
+             }else if($mailtype == 'enquery'){
+                $url=base_url().'home/enquery/?code='.$param['act_link'];
+                $data['act_link'] = $url;
+                $data['user_email'] = $param['to_email'];
+                $message = $this->load->view('emails/enq_mail',$data,true);
              }else{
                  $data = '';
-                 $message = $this->load->view('email/email',$data,true);
+                 $message =  $param['content'];
              }
 
         $this->email->set_newline("\r\n");

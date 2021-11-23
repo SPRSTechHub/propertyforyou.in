@@ -12,7 +12,7 @@ public function __construct(){
         $this->load->database();
     }
 	
-private function _get_datatables_query($tbl){
+    private function _get_datatables_query($tbl){
         
         $column_order = $this->db->list_fields($tbl);
 	 	$column_search = $this->db->list_fields($tbl);

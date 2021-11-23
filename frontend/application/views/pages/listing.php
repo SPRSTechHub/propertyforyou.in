@@ -5,6 +5,7 @@
     border-radius: 15px;
     color: #FFFFFF !important;
 }
+
 </style>
 
 <div class="modal fade" id="other_modal" tabindex="-1" role="dialog" aria-labelledby="other_modalTitle"
@@ -43,29 +44,58 @@
                         <span id="img_counter_txt"><?=!empty($post_img_data)? count($post_img_data): '';?> </span>
                     </h3>
                     <div class="property-form-group">
-                        <div class="d-flex justify-content-between">
-                            <div class="card card-body customFile"><small>Primary</small>
+                        <div class="row">
+                            <div class="col-lg-2 col-sm-6 col-md-6 card card-body customFile"><small>Primary</small>
                                 <input type="file" name="file" id="file1" class="_upload" />
                                 <input type="submit" name="submit" value="Upload" class="_upload_btn"
                                     style="display: none;" />
                             </div>
-                            <div class=" card card-body customFile"><small>Optional</small>
+                            <div class="col-lg-2 col-sm-6 col-md-6  card card-body customFile"><small>Optional</small>
                                 <input type="file" name="file" id="file" class="_upload" />
                                 <input type="submit" name="submit" value="Upload" class="_upload_btn"
                                     style="display: none;" />
                             </div>
-                            <div class=" card card-body customFile"><small>Optional</small>
+                            <div class="col-lg-2 col-sm-6 col-md-6  card card-body customFile"><small>Optional</small>
                                 <input type="file" name="file" id="file3" class="_upload" />
                                 <input type="submit" name="submit" value="Upload" class="_upload_btn"
                                     style="display: none;" />
                             </div>
-                            <div class=" card card-body customFile"><small>Optional</small small>
+                            <div class="col-lg-2 col-sm-6 col-md-6  card card-body customFile"><small>Optional</small
+                                    small>
                                 <input type="file" name="file" id="file4" class="_upload" />
                                 <input type="submit" name="submit" value="Upload" class="_upload_btn"
                                     style="display: none;" />
                             </div>
-                            <div class=" card card-body customFile"><small>Optional</small>
+                            <div class="col-lg-2 col-sm-6 col-md-6  card card-body customFile"><small>Optional</small>
                                 <input type="file" name="file" id="file5" class="_upload" />
+                                <input type="submit" name="submit" value="Upload" class="_upload_btn"
+                                    style="display: none;" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2 col-sm-6 col-md-6 card card-body customFile"><small>Primary</small>
+                                <input type="file" name="file" id="file6" class="_upload" />
+                                <input type="submit" name="submit" value="Upload" class="_upload_btn"
+                                    style="display: none;" />
+                            </div>
+                            <div class="col-lg-2 col-sm-6 col-md-6  card card-body customFile"><small>Optional</small>
+                                <input type="file" name="file" id="file7" class="_upload" />
+                                <input type="submit" name="submit" value="Upload" class="_upload_btn"
+                                    style="display: none;" />
+                            </div>
+                            <div class="col-lg-2 col-sm-6 col-md-6  card card-body customFile"><small>Optional</small>
+                                <input type="file" name="file" id="file8" class="_upload" />
+                                <input type="submit" name="submit" value="Upload" class="_upload_btn"
+                                    style="display: none;" />
+                            </div>
+                            <div class="col-lg-2 col-sm-6 col-md-6  card card-body customFile"><small>Optional</small
+                                    small>
+                                <input type="file" name="file" id="file9" class="_upload" />
+                                <input type="submit" name="submit" value="Upload" class="_upload_btn"
+                                    style="display: none;" />
+                            </div>
+                            <div class="col-lg-2 col-sm-6 col-md-6  card card-body customFile"><small>Optional</small>
+                                <input type="file" name="file" id="file10" class="_upload" />
                                 <input type="submit" name="submit" value="Upload" class="_upload_btn"
                                     style="display: none;" />
                             </div>
@@ -139,27 +169,24 @@
                                         <label for="price">Type</label>
                                         <select class="nice-select form-control wide" id="type" tabindex="0">
                                             <ul class="list">
-                                                <option data-value="1" value="house" class="option">house</option>
-                                                <option data-value="2" value="commercial" class="option">commercial
+                                                <option data-value="1" value="house" class="option">Individual House
                                                 </option>
-                                                <option data-value="3" value="apartment" class="option">apartment
+                                                <option data-value="2" value="commercial" class="option">Commercial
                                                 </option>
-                                                <option data-value="4" value="lot" class="option">lot</option>
-                                                <option data-value="5" value="garage" class="option">garage</option>
-                                            </ul>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12 dropdown faq-drop">
-                                    <div class="form-group categories">
-                                        <label for="price">Room</label>
-                                        <select class="nice-select form-control wide" id="room" tabindex="0">
-                                            <ul class="list">
-                                                <option data-value="1" value="1" class="option">1</option>
-                                                <option data-value="2" value="2" class="option">2</option>
-                                                <option data-value="3" value="3" class="option">3</option>
-                                                <option data-value="4" value="4" class="option">4</option>
-                                                <option data-value="5" value="5" class="option">5</option>
+                                                <option data-value="3" value="apartment" class="option">Stand Alone
+                                                    Apartment
+                                                </option>
+                                                <option data-value="4" value="lot" class="option">Lot</option>
+                                                <option data-value="5" value="complex" class="option">Residential
+                                                    Complex</option>
+
+                                                <option data-value="4" value="com_space" class="option">Commercial space
+                                                </option>
+                                                <option data-value="4" value="garage" class="option">Garage</option>
+                                                <option data-value="4" value="shop" class="option">Shop</option>
+                                                <option data-value="4" value="pg" class="option">PG</option>
+                                                <option data-value="4" value="vacant_land" class="option">Vacant Land
+                                                </option>
                                             </ul>
                                         </select>
                                     </div>
@@ -169,7 +196,7 @@
                                 <div class="col-lg-6 col-md-12">
                                     <p class="no-mb">
                                         <label for="price">Price</label>
-                                        <input type="text" name="price" placeholder="INR" id="price">
+                                        <input type="number" name="price" placeholder="INR" id="price">
                                     </p>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
@@ -208,9 +235,9 @@
                                     </p>
                                 </div>
                                 <div class="col-lg-3 col-md-6">
-                                    <p>landmark
+                                    <p>
                                         <label for="pin" class="pb-3">Pincode*</label>
-                                        <input type="text" name="pin" placeholder="Enter Your Address" id="pin"
+                                        <input type="number" name="pin" placeholder="Enter Your Pincode" id="pin"
                                             required>
                                     </p>
                                 </div>
@@ -220,7 +247,7 @@
                                         <select class="nice-select form-control wide" id="state" tabindex="0">
                                             <ul class="list">
                                                 <?
-                                                    $fnd_state = $this->query->finder(array('status'=> '1'),'state_tbl');
+                                                    $fnd_state = $this->query->state_finder(array('status'=> '1'),'state_tbl');
                                                     if($fnd_state){
                                                         foreach($fnd_state->result() as $state){
                                                             ?>
@@ -254,7 +281,11 @@
 
                                 <div class="col-lg-4 col-md-12 dropdown faq-drop">
                                     <div class="form-group categories">
-                                        <label for="price">House Age</label>
+                                        <!-- <p class="no-mb last">
+                                            <label for="area">Property Age</label>
+                                            <input type="number" name="area" placeholder="" id="b_date">
+                                        </p> -->
+                                        <label for="price">Property Age</label>
                                         <select class="nice-select form-control wide" tabindex="0" id="b_date">
                                             <ul class="list">
                                                 <option data-value="0-1" value="0-1" class="option">0-1 years</option>
@@ -268,6 +299,8 @@
                                                 <option data-value="0-50" value="0-50" class="option">0-50 years
                                                 </option>
                                                 <option data-value="50+" value="50+" class="option">50+ years</option>
+                                                <option data-value="0-1" value="not_applicable" class="option">NOT
+                                                    APPLICABLE</option>
                                             </ul>
                                         </select>
                                     </div>
@@ -275,6 +308,10 @@
 
                                 <div class="col-lg-4 col-md-12 dropdown faq-drop">
                                     <div class="form-group categories">
+                                        <!-- <p class="no-mb last">
+                                            <label for="area">Bedroom</label>
+                                            <input type="number" name="area" placeholder="" id="bedroom">
+                                        </p> -->
                                         <label for="price">Bedroom</label>
                                         <select class="nice-select form-control wide" tabindex="0" id="bedroom">
                                             <ul class="list">
@@ -284,13 +321,23 @@
                                                 <option data-value="2" value="4" class="option">4</option>
                                                 <option data-value="1" value="5" class="option">5</option>
                                                 <option data-value="2" value="6" class="option">6</option>
-                                                <option data-value="2" value="6+" class="option">6+</option>
+                                                <option data-value="2" value="7" class="option">7</option>
+                                                <option data-value="2" value="8" class="option">8</option>
+                                                <option data-value="2" value="9" class="option">9</option>
+                                                <option data-value="2" value="10" class="option">10</option>
+                                                <option data-value="2" value="10+" class="option">10+</option>
+                                                <option data-value="0-1" value="not_applicable" class="option">NOT
+                                                    APPLICABLE</option>
                                             </ul>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-12 dropdown faq-drop">
                                     <div class="form-group categories">
+                                        <!-- <p class="no-mb last">
+                                            <label for="area">Bathroom</label>
+                                            <input type="number" name="area" placeholder="" id="bathroom">
+                                        </p> -->
                                         <label for="price">Bathroom</label>
                                         <select class="nice-select form-control wide" tabindex="0" id="bathroom">
                                             <ul class="list">
@@ -300,13 +347,228 @@
                                                 <option data-value="2" value="4" class="option">4</option>
                                                 <option data-value="1" value="5" class="option">5</option>
                                                 <option data-value="2" value="6" class="option">6</option>
-                                                <option data-value="2" value="6+" class="option">6+</option>
+                                                <option data-value="2" value="7" class="option">7</option>
+                                                <option data-value="2" value="8" class="option">8</option>
+                                                <option data-value="2" value="9" class="option">9</option>
+                                                <option data-value="2" value="10" class="option">10</option>
+                                                <option data-value="2" value="10+" class="option">10+</option>
+                                                <option data-value="0-1" value="not_applicable" class="option">NOT
+                                                    APPLICABLE</option>
                                             </ul>
                                         </select>
                                     </div>
                                 </div>
 
                             </div>
+
+                            <div class="row">
+
+                                <div class="col-lg-4 col-md-12 dropdown faq-drop">
+                                    <div class="form-group categories">
+                                        <!-- <p class="no-mb last">
+                                            <label for="area">Property Age</label>
+                                            <input type="number" name="area" placeholder="" id="b_date">
+                                        </p> -->
+                                        <label for="price">Dining</label>
+                                        <select class="nice-select form-control wide" tabindex="0" id="dining">
+                                            <ul class="list">
+                                                <option data-value="1" value="1" class="option">1</option>
+                                                <option data-value="2" value="2" class="option">2</option>
+                                                <option data-value="1" value="3" class="option">3</option>
+                                                <option data-value="2" value="4" class="option">4</option>
+                                                <option data-value="1" value="5" class="option">5</option>
+                                                <option data-value="2" value="6" class="option">6</option>
+                                                <option data-value="2" value="7" class="option">7</option>
+                                                <option data-value="2" value="8" class="option">8</option>
+                                                <option data-value="2" value="9" class="option">9</option>
+                                                <option data-value="2" value="10" class="option">10</option>
+                                                <option data-value="2" value="10+" class="option">10+</option>
+                                                <option data-value="0-1" value="not_applicable" class="option">NOT
+                                                    APPLICABLE</option>
+                                            </ul>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-12 dropdown faq-drop">
+                                    <div class="form-group categories">
+                                        <!-- <p class="no-mb last">
+                                            <label for="area">Bedroom</label>
+                                            <input type="number" name="area" placeholder="" id="bedroom">
+                                        </p> -->
+                                        <label for="price">Kitchen</label>
+                                        <select class="nice-select form-control wide" tabindex="0" id="kitchen">
+                                            <ul class="list">
+                                                <option data-value="1" value="1" class="option">1</option>
+                                                <option data-value="2" value="2" class="option">2</option>
+                                                <option data-value="1" value="3" class="option">3</option>
+                                                <option data-value="2" value="4" class="option">4</option>
+                                                <option data-value="1" value="5" class="option">5</option>
+                                                <option data-value="2" value="6" class="option">6</option>
+                                                <option data-value="2" value="7" class="option">7</option>
+                                                <option data-value="2" value="8" class="option">8</option>
+                                                <option data-value="2" value="9" class="option">9</option>
+                                                <option data-value="2" value="10" class="option">10</option>
+                                                <option data-value="2" value="10+" class="option">10+</option>
+                                                <option data-value="0-1" value="not_applicable" class="option">NOT
+                                                    APPLICABLE</option>
+                                            </ul>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12 dropdown faq-drop">
+                                    <div class="form-group categories">
+                                        <!-- <p class="no-mb last">
+                                            <label for="area">Bathroom</label>
+                                            <input type="number" name="area" placeholder="" id="bathroom">
+                                        </p> -->
+                                        <label for="price">Balcony</label>
+                                        <select class="nice-select form-control wide" tabindex="0" id="balcony">
+                                            <ul class="list">
+                                                <option data-value="1" value="1" class="option">1</option>
+                                                <option data-value="2" value="2" class="option">2</option>
+                                                <option data-value="1" value="3" class="option">3</option>
+                                                <option data-value="2" value="4" class="option">4</option>
+                                                <option data-value="1" value="5" class="option">5</option>
+                                                <option data-value="2" value="6" class="option">6</option>
+                                                <option data-value="2" value="7" class="option">7</option>
+                                                <option data-value="2" value="8" class="option">8</option>
+                                                <option data-value="2" value="9" class="option">9</option>
+                                                <option data-value="2" value="10" class="option">10</option>
+                                                <option data-value="2" value="10+" class="option">10+</option>
+                                                <option data-value="0-1" value="not_applicable" class="option">NOT
+                                                    APPLICABLE</option>
+                                            </ul>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-lg-3 col-md-12 dropdown faq-drop">
+                                    <div class="form-group categories">
+                                        <label for="price">Garage Available</label>
+                                        <select class="nice-select form-control wide" tabindex="0" id="garage_avail">
+                                            <ul class="list">
+                                                <option data-value="0-5" value="yes" class="option">YES</option>
+                                                <option data-value="50+" value="no" class="option">NO</option>
+                                                <option data-value="0-1" value="not_applicable" class="option">NOT
+                                                    APPLICABLE</option>
+
+                                            </ul>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-12 dropdown faq-drop">
+                                    <div class="form-group categories">
+                                        <label for="price">Electricity Available</label>
+                                        <select class="nice-select form-control wide" tabindex="0"
+                                            id="electricity_avail">
+                                            <ul class="list">
+                                                <option data-value="0-5" value="yes" class="option">YES</option>
+                                                <option data-value="50+" value="no" class="option">NO</option>
+                                                <option data-value="0-1" value="not_applicable" class="option">NOT
+                                                    APPLICABLE</option>
+
+                                            </ul>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-12 dropdown faq-drop">
+                                    <div class="form-group categories">
+
+                                        <label for="price">Water Available</label>
+                                        <select class="nice-select form-control wide" tabindex="0" id="water_avail">
+                                            <ul class="list">
+                                                <option data-value="0-5" value="yes" class="option">YES</option>
+                                                <option data-value="50+" value="no" class="option">NO</option>
+                                                <option data-value="0-1" value="not_applicable" class="option">NOT
+                                                    APPLICABLE</option>
+
+                                            </ul>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-12 dropdown faq-drop">
+                                    <div class="form-group categories">
+                                        <label for="price">Presently Habitable</label>
+                                        <select class="nice-select form-control wide" tabindex="0" id="habitable">
+                                            <ul class="list">
+                                                <option data-value="0-5" value="yes" class="option">YES</option>
+                                                <option data-value="50+" value="no" class="option">NO</option>
+                                                <option data-value="0-1" value="not_applicable" class="option">NOT
+                                                    APPLICABLE</option>
+
+                                            </ul>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+
+
+                                <div class="col-lg-4 col-md-12 dropdown faq-drop">
+                                    <div class="form-group categories">
+                                        <label for="price">Lift Available</label>
+                                        <select class="nice-select form-control wide" tabindex="0" id="lift">
+                                            <ul class="list">
+                                                <option data-value="0-5" value="yes" class="option">YES</option>
+                                                <option data-value="50+" value="no" class="option">NO</option>
+                                                <option data-value="0-1" value="not_applicable" class="option">NOT
+                                                    APPLICABLE</option>
+
+                                            </ul>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12 dropdown faq-drop">
+                                    <div class="form-group categories">
+
+                                        <label for="price">Floor</label>
+                                        <select class="nice-select form-control wide" tabindex="0" id="floor">
+                                            <ul class="list">
+                                                <option data-value="0-5" value="top" class="option">TOP</option>
+                                                <option data-value="50+" value="ground" class="option">GROUND</option>
+                                                <option data-value="0-5" value="other" class="option">ANY OTHER</option>
+                                                <option data-value="0-1" value="not_applicable" class="option">NOT
+                                                    APPLICABLE</option>
+
+                                            </ul>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12 dropdown faq-drop">
+                                    <div class="form-group categories">
+
+                                        <label for="price">property facing</label>
+                                        <select class="nice-select form-control wide" tabindex="0" id="facing">
+                                            <ul class="list">
+                                                <option data-value="0-5" value="east" class="option">EAST</option>
+                                                <option data-value="50+" value="west" class="option">WEST</option>
+                                                <option data-value="0-5" value="south" class="option">SOUTH</option>
+                                                <option data-value="0-1" value="north" class="option">NORTH</option>
+                                                <option data-value="0-5" value="south_east" class="option">SOUTH EAST
+                                                </option>
+                                                <option data-value="0-5" value="north_east" class="option">NORTH EAST
+                                                </option>
+                                                <option data-value="0-5" value="south_west" class="option">SOUTH WEST
+                                                </option>
+                                                <option data-value="0-5" value="north_west" class="option">NORTH WEST
+                                                </option>
+
+                                            </ul>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
                     <!-- EXTRA END HERE -->
@@ -322,25 +584,32 @@
                                         <input type="text" placeholder="Enter Your Name" id="con_name" name="con_name">
                                     </p>
                                 </div>
-                                <!--div class="col-lg-6 col-md-12">
-                                <p>
-                                    <label for="con-user">Username</label>
-                                    <input type="text" placeholder="Enter Your Username" id="con_user" name="con_user">
-                                </p>
-                            </div-->
+                                <div class="col-lg-6 col-md-12">
+                                    <p>
+                                        <input type="hidden" placeholder="Enter Your Username" id="con_user"
+                                            name="con_user">
+                                        <label for="post_by">I am ... </label>
+                                        <select class="nice-select form-control wide" tabindex="0" id="post_by">
+                                            <ul class="list">
+                                                <option value="Agent" class="option">Agent</option>
+                                                <option value="Owner" class="option">Owner</option>
+                                            </ul>
+                                        </select>
+                                    </p>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6 col-md-12">
                                     <p class="no-mb first">
                                         <label for="con-email">Email</label>
                                         <input type="email" placeholder="Enter Your Email" id="con_email"
-                                            name="con_email">
+                                            name="con_email" value="<?=$user_data->userid;?>" readonly>
                                     </p>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <p class="no-mb last">
                                         <label for="con-phn">Phone</label>
-                                        <input type="text" placeholder="Enter Your Phone Number" id="con_phn"
+                                        <input type="number" placeholder="Enter Your Phone Number" id="con_phn"
                                             name="con_phn">
                                     </p>
                                 </div>
@@ -376,7 +645,7 @@
                                         <a href="#">
                                             <h6 class="text-white">Family Modern Home</h6>
                                         </a>
-                                        <p>$230,000</p>
+                                        <p>₹230,000</p>
                                     </div>
                                 </div>
                                 <div class="recent-main my-4">
@@ -389,7 +658,7 @@
                                         <a href="#">
                                             <h6 class="text-white">Luxury Villa House</h6>
                                         </a>
-                                        <p>$120,000</p>
+                                        <p>₹120,000</p>
                                     </div>
                                 </div>
                                 <div class="recent-main">
@@ -402,7 +671,7 @@
                                         <a href="#">
                                             <h6 class="text-white">Luxury Family Home</h6>
                                         </a>
-                                        <p>$150,000</p>
+                                        <p>₹150,000</p>
                                     </div>
                                 </div>
                             </div>
@@ -425,7 +694,7 @@
                                         <a href="#">
                                             <h6 class="text-white">Family Modern Home</h6>
                                         </a>
-                                        <p>$230,000</p>
+                                        <p>₹230,000</p>
                                     </div>
                                 </div>
                                 <div class="recent-main my-4">
@@ -438,7 +707,7 @@
                                         <a href="#">
                                             <h6 class="text-white">Luxury Villa House</h6>
                                         </a>
-                                        <p>$120,000</p>
+                                        <p>₹120,000</p>
                                     </div>
                                 </div>
                                 <div class="recent-main">
@@ -451,7 +720,7 @@
                                         <a href="#">
                                             <h6 class="text-white">Luxury Family Home</h6>
                                         </a>
-                                        <p>$150,000</p>
+                                        <p>₹150,000</p>
                                     </div>
                                 </div>
                             </div>
@@ -477,7 +746,6 @@ $(document).ready(function() {
         var pin = $("#pin").val();
         var purpose = $("#purpose option:selected").val();
         var type = $("#type option:selected").val();
-        var room = $("#room option:selected").val();
         var price = $("#price").val();
         var area = $("#area").val();
         var address = $("#address").val();
@@ -488,11 +756,23 @@ $(document).ready(function() {
         var b_date = $("#b_date option:selected").val();
         var bedroom = $("#bedroom option:selected").val();
         var bathroom = $("#bathroom option:selected").val();
+        var post_by = $("#post_by option:selected").val();
+
+        var garage_avail = $("#garage_avail option:selected").val();
+        var electricity_avail = $("#electricity_avail option:selected").val();
+        var water_avail = $("#water_avail option:selected").val();
+        var habitable = $("#habitable").val();
+        var lift = $("#lift option:selected").val();
+        var floor = $("#floor option:selected").val();
+        var facing = $("#facing option:selected").val();
+
+        var dining = $("#dining").val();
+        var kitchen = $("#kitchen").val();
+        var balcony = $("#balcony").val();
         var con_name = $("#con_name").val();
         var con_user = '<?=$user_data->userid;?>';
         var con_email = $("#con_email").val();
         var con_phn = $("#con_phn").val();
-
         var datastring = {
             userid: userid,
             house_name: house_name,
@@ -500,11 +780,11 @@ $(document).ready(function() {
             desc2: desc2,
             purpose: purpose,
             type: type,
-            room: room,
             price: price,
             pin: pin,
             area: area,
             address: address,
+            post_by: post_by,
             landmark: landmark,
             city: city,
             state: state,
@@ -512,23 +792,39 @@ $(document).ready(function() {
             b_date: b_date,
             bedroom: bedroom,
             bathroom: bathroom,
+            dining: dining,
+            kitchen: kitchen,
+            balcony: balcony,
+            garage_avail: garage_avail,
+            electricity_avail: electricity_avail,
+            water_avail: water_avail,
+            habitable: habitable,
+            lift: lift,
+            floor: floor,
+            facing: facing,
             con_name: con_name,
             con_user: con_user,
             con_email: con_email,
             con_phn: con_phn,
         };
+
         if (userid == '') {
             $("#other_modal").modal('show');
             $('#message').html('Empty House Id...!');
+        } else if (con_phn=='') {
+            $("#other_modal").modal('show');
+            $('#message').html('Contact Number must not empty');
+        } else if (pin =='') {
+            $("#other_modal").modal('show');
+            $('#message').html('Pincode must be not empty');
         } else if (house_name == '') {
             $("#other_modal").modal('show');
             $('#message').html('Empty House Name...!');
-        } else if (bathroom == '' || desc1 == '' || purpose == '' || type == '' || room == '' ||
+        } else if (bathroom == '' || desc1 == '' || purpose == '' || type == '' ||
             price == '' || con_email == '' || con_user == '' || con_name == '' ||
             area == '' || landmark == '' | pin == '' || address == '' || city == '' || state == '' ||
             country == '' ||
-            b_date == '' ||
-            bedroom == '' || con_phn == '') {
+            b_date == '' || con_phn == '') {
             $("#other_modal").modal('show');
             $('#message').html('All fields are mandatory');
         } else {
@@ -593,7 +889,8 @@ $(document).ready(function() {
 
     $('._upload_btn').click(function(e) {
         e.preventDefault();
-        var hid = '<?=!empty($post_data['house_id'])? $post_data['house_id'] : '' ; ?>';
+        var hid = "<?=!empty($post_data['house_id'])? $post_data['house_id'] : '' ; ?>";
+
         var myFormData = $(this).closest('div.customFile').find('._upload');
         var data = myFormData.attr("id");
         var file_data = $("#" + data).prop("files")[0];
@@ -641,7 +938,7 @@ $(document).ready(function() {
     $("._upload").change(function() {
         var $this = $(this);
         var imgfile = (this.files[0]);
-        filesize = '2000000'; // 2 mb
+        filesize = '8000000'; // 8 mb
         // Allowing file type
         var allowedExtensions = ["image/gif", "image/jpeg", "image/png"];
 

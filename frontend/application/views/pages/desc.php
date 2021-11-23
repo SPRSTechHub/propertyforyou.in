@@ -199,7 +199,7 @@ redirect('https://propertyforyou.in');
                 $house_rev=$this->query->finder(array('house_id'=>$house_id),'review_tbl');
                 if($house_rev){?>
                 <section class="reviews comments">
-                    <h3 class="mb-5">3 Reviews</h3>
+                    <h3 class="mb-5">Reviews</h3>
                     <div class="row mb-5">
                         <?
                     foreach ($house_rev->result() as $data_rev){
@@ -207,7 +207,7 @@ redirect('https://propertyforyou.in');
                         <ul class="col-12 commented pl-0">
                             <li class="comm-inf">
                                 <div class="col-md-2">
-                                    <img src="<?=base_url();?>/assets/images/testimonials/ts-5.jpg" class="img-fluid"
+                                    <img src="<?=base_url();?>/assets/images/property_logo.png" class="img-fluid"
                                         alt="">
                                 </div>
                                 <div class="col-md-10 comments-info">
@@ -312,17 +312,18 @@ redirect('https://propertyforyou.in');
                     <div class="sidebar">
                         <div class="widget-boxed mt-33 mt-5">
                             <div class="widget-boxed-header">
-                                <h4>Agent Information</h4>
+                                <h4><?=$house_dtl->row()->post_by;?> Information</h4>
                             </div>
-                            <? if($this->session->has_userdata('ses_data')){?>
+                            <? 
+                            $show_dtl=$this->query->finder(array('userid'=>$house_dtl->row()->con_email,'dtl'=>'show'),'user_tbl');
+                            if(!empty($show_dtl)){?>
                             <div class="widget-boxed-body">
                                 <div class="sidebar-widget author-widget2">
-                                    <!-- STATIC>
+
                                     <div class="author-box clearfix">
-                                        <img src="<?=base_url();?>/assets/images/testimonials/ts-1.jpg"
-                                            alt="author-image" class="author__img">
+                                        <img src="<?=base_url();?>/assets/images/property_logo.png" alt="author-image"
+                                            class="author__img">
                                         <h4 class="author__title"><?=$house_dtl->row()->con_name;?></h4>
-                                        <p class="author__meta"><?=$house_dtl->row()->con_user;?></p>
                                     </div>
                                     <ul class="author__contact">
                                         <li><span class="la la-phone"><i class="fa fa-phone"
@@ -333,21 +334,7 @@ redirect('https://propertyforyou.in');
                                                 href="#"><?=$house_dtl->row()->con_email;?></a>
                                         </li>
                                     </ul>
-                                    <STATIC -->
-                                    <!-- STATIC -->
-                                    <div class="author-box clearfix">
-                                        <img src="<?=base_url();?>/assets/images/testimonials/ts-1.jpg"
-                                            alt="author-image" class="author__img">
-                                        <h4 class="author__title">XXXXXX</h4>
-                                        <p class="author__meta">XXXXXX</p>
-                                    </div>
-                                    <ul class="author__contact">
-                                        <li><span class="la la-phone"><i class="fa fa-phone"
-                                                    aria-hidden="true"></i></span><a href="#">XXXXXX</a></li>
-                                        <li><span class="la la-envelope-o"><i class="fa fa-envelope"
-                                                    aria-hidden="true"></i></span><a href="#">XXXXXX</a></li>
-                                    </ul>
-                                    <!-- STATIC -->
+
                                 </div>
                             </div>
 
@@ -356,8 +343,8 @@ redirect('https://propertyforyou.in');
                                 <div class="sidebar-widget author-widget2">
                                     <!-- STATIC -->
                                     <div class="author-box clearfix">
-                                        <img src="<?=base_url();?>/assets/images/testimonials/ts-1.jpg"
-                                            alt="author-image" class="author__img">
+                                        <img src="<?=base_url();?>/assets/images/property_logo.png" alt="author-image"
+                                            class="author__img">
                                         <h4 class="author__title">XXXXXX</h4>
                                         <p class="author__meta">XXXXXX</p>
                                     </div>
@@ -408,10 +395,16 @@ redirect('https://propertyforyou.in');
                                         <div class="homes-tag button alt featured">Featured</div>
                                         <div class="homes-tag button alt sale">For <?=$data->purpose;?></div>
                                         <div class="homes-price">₹ <?=$data->price;?></div>
-                                        <img src="<?=base_url();?>/assets/images/blog/b-11.jpg" alt="home-1"
-                                            class="img-responsive">
+
+                                        <? 
+                                                    $get_img_url = $this->query->getlastimg1(array('house_id'=>$data->house_id));
+                                        ?>
+
+                                        <img src="<?=base_url();?>/uploads/<?=!empty($get_img_url)? $get_img_url : 'https://propertyforyou.in//assets/images/feature-properties/fp-1.jpg';?>"
+                                            alt="home-1" class="img-responsive" style="width:450px; height:200px;">
                                     </a>
                                 </div>
+
                             </div>
                             <!-- homes content -->
                             <div class="homes-content">
@@ -427,24 +420,20 @@ redirect('https://propertyforyou.in');
                                 <!-- homes List -->
                                 <ul class="homes-list clearfix pb-3">
                                     <li class="the-icons">
-                                        <i class="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span><?=$data->bedroom;?> Bedrooms</span>
+                                        Pin
+                                        <span><?=!empty($data->pin)?$data->pin : '******';?></span>
                                     </li>
-                                    <li class="the-icons">
-                                        <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span><?=$data->bathroom;?> Bathrooms</span>
-                                    </li>
+
                                     <li class="the-icons">
                                         <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span><?=$data->area;?> sq ft</span>
+                                        <span>Area:<?=$data->area;?> sq ft</span>
+                                    </li>
+                                    <li class="the-icons">
+                                        <span>City: <?=$data->city;?></span>
                                     </li>
                                     <li class="the-icons">
                                         <i class="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span><?=$data->garage;?> Garages</span>
-                                    </li>
-                                    <li class="the-icons">
-                                        <i class="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span>Post-<?=$data->date;?></span>
+                                        <span>Date: <?=$data->date;?></span>
                                     </li>
                                 </ul>
                                 <div class="footer">

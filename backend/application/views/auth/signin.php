@@ -27,11 +27,7 @@
 <script src="<?=base_url();?>/assets/plugins/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="<?=base_url();?>/assets/plugins/bootstrap/js/bootstrap.bundle.js" type="text/javascript"></script>
 <script src="<?=base_url();?>/assets/plugins/jquery.backstretch/jquery.backstretch.js" type="text/javascript"></script>
-<!-- BEGIN PAGE LEVEL JS -->
-<script src="<?=base_url();?>/assets/js/pvr_lite_login_v1.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL JS -->
-<!-- PVR Lite DEMO, don't include it in your project! -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-66289183-8"></script>
+
 </head>
 <body class="theme-orange" style="overflow: auto;">
 <div class="auth animated slideInRight">
@@ -81,6 +77,22 @@
 <div class="auth_bg"></div>
 
 
+<div class="modal fade" id="other_modal" tabindex="-1" role="dialog" aria-labelledby="other_modalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="other_modalTitle">Alert</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="message"></p>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -97,27 +109,32 @@
             admin_pass: admin_pass
         };
         if (admin_id == '') {
-            alert('Id is empty ...!');
+            $("#other_modal").modal('show');
+            $('#message').html('Id is empty ...!');
         } else if (admin_pass == '') {
 
-            alert('password empty ...!');
+            $("#other_modal").modal('show');
+            $('#message').html('password empty ...!');
         } else {
             $.ajax({
-                url: "<?=base_url();?>home/checking_tbl/",
+                url: "<?=base_url();?>functions/checking_tbl/",
                 dataType: 'json',
                 method: "POST",
                 data: datastring,
                 catch: false,
                 success: function(data) {
                     if (data.error == '2') {
-                        alert(data.status);
+                        $("#other_modal").modal('show');
+            $('#message').html(data.status);
                     } else if (data.error == '1') {
-                        alert(data.status);
+                        $("#other_modal").modal('show');
+            $('#message').html(data.status);
                     } else if (data.error == '0') {
                         location.replace(
                             'https://control.propertyforyou.in/');
                     } else {
-                        alert(data.status);
+                        $("#other_modal").modal('show');
+            $('#message').html(data.status);
                     }
                 }
             });
@@ -125,7 +142,11 @@
     });
 });
 </script>
-
+<!-- BEGIN PAGE LEVEL JS -->
+<script src="<?=base_url();?>/assets/js/pvr_lite_login_v1.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL JS -->
+<!-- PVR Lite DEMO, don't include it in your project! -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-66289183-8"></script>
 
 
 
